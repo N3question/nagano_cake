@@ -1,51 +1,42 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/unsubscribe'
-  end
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  # namespace :public do
+    # resource :customer, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    get '/customers/my_page', to: 'customers#show', as: 'my_page'
+    get '/customers/information/edit', to: 'customers#edit', as: 'edit_information'
+    patch '/customers/information', to: 'customers#update', as: 'information'
+    get '/customers/unsubscribe', to: 'customers#unsubscribe', as: 'unsubscribe'
+    patch '/customers/withdraw', to: 'customers#withdraw', as: 'withdraw'
+    
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    
+    resources :orders, only: [:new, :create, :index, :show]
+    post '/orders/comfirm', to: 'orders#comfirm'
+    get '/orders/complete', to: 'orders#complete'
+    
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete '/cart_items/destroy_all'
+    
+    resources :items, only: [:index, :show]
+    
+    get '/', to: 'homes#top', as: 'top'
+    get '/about', to: 'homes#about', as: 'about'
+  # end
+  
+  namespace :admin do
+    resources :orders, only: [:show, :update]
+    
+    resources :items, except: :destroy
+    
+    resources :customers, only: [:index, :show, :create, :edit, :update]
+    
+    resources :genres, only: [:index, :create, :edit, :update]
+    
+    patch '/order_details/:id', to: 'order_details#update', as: 'order_detail'
+    
+    get '/', to: 'homes#top', as: 'top'
+  end
 
     # 顧客用
   # URL /customers/sign_in...
