@@ -1,19 +1,38 @@
-<h4>管理者ログイン</h4>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, 'メールアドレス' %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com" %>
+<div class="container my-5 ">
+  <div class="row">
+    <h4 class="ml-5 mb-4">管理者ログイン</h4>
   </div>
+  
+  <div class="row ml-3">
+    <div class="">
+      
+      <div class="ml-5">
+        <div class="ml-5">
+          <table>
+            <tbody>
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field ml-5">
+                  <tr>
+                    <td><%= f.label :email, 'メールアドレス' %></td>
+                    <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com", class:"ml-5" %></td>
+                  </tr>
 
-  <div class="field">
-    <%= f.label :password, 'パスワード' %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div><br>
+                  <tr>
+                    <td><%= f.label :password, 'パスワード' %></td>
+                    <td><%= f.password_field :password, autocomplete: "current-password", class:"ml-5" %></td>
+                  </tr>
+                  
+                  <tr>
+                    <td></td>
+                    <td><%= f.submit "ログイン", class:"btn btn-primary ml-5" %></td>
+                  </tr>
+                </div>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-  <div class="actions">
-  <%= f.submit "ログイン", class:"btn btn-primary" %>
+    <%= render "admin/shared/links" %> <!--viewファイル直下のファイル名を変更 admins => admin-->
   </div>
-<% end %>
-
-<%= render "admin/shared/links" %> <!--viewファイル直下のファイル名を変更 admins => admin-->
+</div>
