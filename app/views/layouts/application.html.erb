@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,7 +10,50 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column vh-100">
+    <header class="border-bottom border-dark">
+      
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <h3 class="my-4 px-5"><%= link_to "LOGO", new_admin_session_path, class:"text-dark text-decoration-none" %></h3>
+        <div class="container">
+          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                         <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <%= link_to 'About', about_path, class:"btn btn-outline-dark btn-sm" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '商品一覧', items_path, class:"btn btn-outline-dark btn-sm" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '新規登録', new_customer_registration_path, class:"btn btn-outline-dark btn-sm" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-outline-dark btn-sm"%>
+              </li>
+            </ul>
+            
+            <div class="col-md-3 input-group">
+              <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="Search"></input>
+              <span class="input-group-btn input-group-append">
+              <submit type="submit" id="btn-search" class="btn btn-primary"><i class="far fa-search"></i>検索</submit>
+            </span>
+          </div>
+          
+        </div>
+      </nav>
+      
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer class="border-top border-dark">
+      
+    </footer>
   </body>
 </html>
