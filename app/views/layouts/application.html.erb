@@ -14,9 +14,10 @@
     <header class="border-bottom border-dark">
       
       <nav class="navbar navbar-expand-lg navbar-light">
-        <h3 class="my-4 px-5"><%= link_to "LOGO", new_admin_session_path, class:"text-dark text-decoration-none" %></h3>
-        <div class="container">
-          
+        <h3 class="my-4 px-5">
+          <%= link_to "LOGO", new_admin_session_path, class:"text-dark text-decoration-none" %>
+        </h3>
+        
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                          <span class="navbar-toggler-icon"></span>
@@ -24,6 +25,48 @@
           
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="list-inline">
+              <li class="list-inline-item">
+                <%= link_to '管理者ログイン', new_admin_session_path, class:"btn btn-outline-info btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '商品一覧', admin_items_path, class:"btn btn-outline-info btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '商品新規投稿画面', new_admin_item_path, class:"btn btn-outline-info btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '商品詳細', admin_top_path, class:"btn btn-outline-success btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '商品編集', root_path, class:"btn btn-outline-success btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'ジャンル一覧・追加', admin_genres_path, class:"btn btn-outline-info btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'ジャンル編集', root_path, class:"btn btn-outline-success btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '会員一覧', admin_customers_path, class:"btn btn-outline-info btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '〜さんの会員詳細', root_path, class:"btn btn-outline-success btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '〜さんの会員情報編集', root_path, class:"btn btn-outline-success btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文履歴一覧', admin_top_path, class:"btn btn-outline-info btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '〜さんの注文履歴', root_path, class:"btn btn-outline-success btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文履歴詳細', root_path, class:"btn btn-outline-success btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'ログアウト', root_path, class:"btn btn-outline-success btn-sm"%>
+              </li>
               <li class="list-inline-item">
                 <%= link_to 'About', about_path, class:"btn btn-outline-dark btn-sm" %>
               </li>
@@ -36,24 +79,62 @@
               <li class="list-inline-item">
                 <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-outline-dark btn-sm"%>
               </li>
+              <li class="list-inline-item">
+                <%= link_to 'ログアウト', root_path, class:"btn btn-outline-warning btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'トップページ', root_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '新規会員登録', root_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '商品詳細', root_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'マイページ', my_page_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '会員情報編集', edit_information_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '配送先登録/一覧', addresses_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文情報入力画面', new_order_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文情報確認画面', root_path, class:"btn btn-outline-warning btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文完了画面', root_path, class:"btn btn-outline-warning btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文履歴一覧', orders_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文履歴', root_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文履歴詳細', destroy_admin_session_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
             </ul>
-            
+          <!--検索フォーム-->
             <div class="col-md-3 input-group">
               <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="Search"></input>
               <span class="input-group-btn input-group-append">
               <submit type="submit" id="btn-search" class="btn btn-primary"><i class="far fa-search"></i>検索</submit>
-            </span>
+              </span>
+            </div>
           </div>
-          
-        </div>
       </nav>
-      
     </header>
+    
     <main>
       <%= yield %>
     </main>
-    <footer class="border-top border-dark">
-      
-    </footer>
+    
+    <footer class="mt-auto border-top border-dark"></footer>
+    
   </body>
 </html>
