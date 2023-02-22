@@ -32,67 +32,76 @@
                 <%= link_to '商品一覧', admin_items_path, class:"btn btn-outline-info btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to '商品新規投稿画面', new_admin_item_path, class:"btn btn-outline-info btn-sm"%>
+                <%= link_to '商品新規投稿', new_admin_item_path, class:"btn btn-outline-info btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to '商品詳細', admin_top_path, class:"btn btn-outline-success btn-sm"%>
+                <%= link_to '商品詳細', url="/admin/items/show", class:"btn btn-outline-success btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to '商品編集', root_path, class:"btn btn-outline-success btn-sm"%>
+                <%= link_to '商品編集', url="", class:"btn btn-outline-success btn-sm"%>
               </li>
               <li class="list-inline-item">
                 <%= link_to 'ジャンル一覧・追加', admin_genres_path, class:"btn btn-outline-info btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to 'ジャンル編集', root_path, class:"btn btn-outline-success btn-sm"%>
+                <%= link_to 'ジャンル編集', url="", class:"btn btn-outline-success btn-sm"%>
               </li>
               <li class="list-inline-item">
                 <%= link_to '会員一覧', admin_customers_path, class:"btn btn-outline-info btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to '〜さんの会員詳細', root_path, class:"btn btn-outline-success btn-sm"%>
+                <%= link_to '〜さんの会員詳細', url="", class:"btn btn-outline-success btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to '〜さんの会員情報編集', root_path, class:"btn btn-outline-success btn-sm"%>
+                <%= link_to '〜さんの会員情報編集', url="", class:"btn btn-outline-success btn-sm"%>
               </li>
               <li class="list-inline-item">
                 <%= link_to '注文履歴一覧', admin_top_path, class:"btn btn-outline-info btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to '〜さんの注文履歴', root_path, class:"btn btn-outline-success btn-sm"%>
+                <%= link_to '〜さんの注文履歴', url="", class:"btn btn-outline-success btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to '注文履歴詳細', root_path, class:"btn btn-outline-success btn-sm"%>
+                <%= link_to '注文履歴詳細', url="", class:"btn btn-outline-success btn-sm"%>
               </li>
+              <!--<li class="list-inline-item">-->
+              <!--  <#%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-outline-success btn-sm"%>-->
+              <!--</li>-->
               <li class="list-inline-item">
-                <%= link_to 'ログアウト', root_path, class:"btn btn-outline-success btn-sm"%>
+                <%= link_to 'top', top_path, class:"btn btn-outline-danger btn-sm"%>
               </li>
               <li class="list-inline-item">
                 <%= link_to 'About', about_path, class:"btn btn-outline-dark btn-sm" %>
               </li>
               <li class="list-inline-item">
-                <%= link_to '商品一覧', items_path, class:"btn btn-outline-dark btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '新規登録', new_customer_registration_path, class:"btn btn-outline-dark btn-sm" %>
+                <%= link_to '新規会員登録', new_customer_registration_path, class:"btn btn-outline-dark btn-sm" %>
               </li>
               <li class="list-inline-item">
                 <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-outline-dark btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to 'ログアウト', root_path, class:"btn btn-outline-warning btn-sm"%>
+                <%= link_to '商品一覧', items_path, class:"btn btn-outline-dark btn-sm" %>
               </li>
               <li class="list-inline-item">
-                <%= link_to 'トップページ', root_path, class:"btn btn-outline-danger btn-sm"%>
+                <%= link_to '商品詳細', url="/items/show", class:"btn btn-outline-warning btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to '新規会員登録', root_path, class:"btn btn-outline-danger btn-sm"%>
+                <%= link_to 'ショッピングカート', cart_items_path, class:"btn btn-outline-warning btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to '商品詳細', root_path, class:"btn btn-outline-danger btn-sm"%>
+                <%= link_to '注文情報入力', new_order_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文情報確認', url="/orders/confirm", class:"btn btn-outline-warning btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文完了画面', orders_complete_path, class:"btn btn-outline-danger btn-sm"%>
               </li>
               <li class="list-inline-item">
                 <%= link_to 'マイページ', my_page_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '退会確認画面', unsubscribe_path, class:"btn btn-outline-danger btn-sm"%>
               </li>
               <li class="list-inline-item">
                 <%= link_to '会員情報編集', edit_information_path, class:"btn btn-outline-danger btn-sm"%>
@@ -101,23 +110,17 @@
                 <%= link_to '配送先登録/一覧', addresses_path, class:"btn btn-outline-danger btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to '注文情報入力画面', new_order_path, class:"btn btn-outline-danger btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '注文情報確認画面', root_path, class:"btn btn-outline-warning btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '注文完了画面', root_path, class:"btn btn-outline-warning btn-sm"%>
+                <%= link_to '配送先編集', url="", class:"btn btn-outline-danger btn-sm"%>
               </li>
               <li class="list-inline-item">
                 <%= link_to '注文履歴一覧', orders_path, class:"btn btn-outline-danger btn-sm"%>
               </li>
               <li class="list-inline-item">
-                <%= link_to '注文履歴', root_path, class:"btn btn-outline-danger btn-sm"%>
+                <%= link_to '注文履歴詳細', url="/orders/show", class:"btn btn-outline-danger btn-sm"%>
               </li>
-              <li class="list-inline-item">
-                <%= link_to '注文履歴詳細', destroy_admin_session_path, class:"btn btn-outline-danger btn-sm"%>
-              </li>
+              <!--<li class="list-inline-item">-->
+              <!--  <#%= link_to 'ログアウト', destroy_customer_session_path, class:"btn btn-outline-warning btn-sm"%>-->
+              <!--</li>-->
             </ul>
           <!--検索フォーム-->
             <div class="col-md-3 input-group">
