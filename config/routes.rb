@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
+  # 顧客用
+  # URL /customers/sign_in...
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: "public/sessions"
+  }
+  
+  # 管理者用
+  # URL /admin/sign_in...
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+  
   scope module: :public do
     root "homes#top"
     get '/', to: 'homes#top', as: 'top'
@@ -14,8 +27,8 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete '/cart_items/destroy_all'
     resources :orders, only: [:new, :create, :index, :show]
-    post '/orders/comfirm', to: 'orders#comfirm'
-    get '/orders/complete', to: 'orders#complete'
+    post '/orders/comfirm', to: 'orders#comfirm', as: 'comfirm'
+    get '/orders/complete', to: 'orders#complete', as: 'complete'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
     
@@ -28,18 +41,5 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     patch '/order_details/:id', to: 'order_details#update', as: 'order_detail'
   end
-
-    # 顧客用
-  # URL /customers/sign_in...
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: "public/sessions"
-  }
-  
-  # 管理者用
-  # URL /admin/sign_in...
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
   
 end

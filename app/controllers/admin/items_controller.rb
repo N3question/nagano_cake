@@ -29,7 +29,7 @@ class Admin::ItemsController < ApplicationController
   
   private
   
-  def item_params
+  def item_params # エラー検出中。質問する。
     params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :is_active) #.merge(genre_id: genre.id)
   end
   
