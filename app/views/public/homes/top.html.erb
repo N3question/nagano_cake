@@ -1,20 +1,26 @@
 <div class="container m-5">
   <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-2 border border-dark">
       <div class="genre_search">
         <table>
           <tr>
-            <td class="border border-dark text-center text-nowrap px-5">ジャンル検索</td>
+            <td class="text-nowrap text-center p-2">ジャンル検索</td>
           </tr>
-          <tr>
-            <td class="border border-dark p-2">ジャンルの一覧を表示？</td>
-          </tr>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td class="p-2">
+                <%= link_to root_path do %>
+                  <%= genre.name %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         </table>
       </div>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8 offset-md-1">
       <div class="messege">
         <table>
           <p>ようこそ、ながのCAKEへ！</p>

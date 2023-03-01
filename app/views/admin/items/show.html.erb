@@ -2,12 +2,21 @@
   <div class="row">
     <h5 class="ml-5 mb-5 bg-light">　商品詳細　</h5>
   </div>
-      <!--<#%= image_tag @item.image, size: "100×100" %>-->
+
   <div class="row">
     <table>
       <thead>
+        <% if @item.image.attached? %>
+            <%= image_tag @item.image, size: "300x400" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "300x400" %>
+        <% end %>
         <tr>
-          <td class="ml-5">商品画像、商品名、商品説明、ジャンル、税込価格（税抜価格）、販売ステータスの表示</td>
+          <!--<td><#%= @item.name %></td>-->
+          <!--<td><#%= @item.introduction %></td>-->
+          <!--<td><#%= @item.genre_id %></td>-->
+          <!--<td><#%= @item.price %>円</td>-->
+          <!--<td><#%= @item.is_active %></td>-->
         </tr>
       </thead>
     </table>

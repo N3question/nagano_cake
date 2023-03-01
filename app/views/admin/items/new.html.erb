@@ -34,10 +34,14 @@
           <tr>
             <td>販売ステータス</td>
             <td>
-              <%= f.radio_button :is_active, 1, class:"ml-3 align-middle" %>
-              <%= f.label :is_active, '販売中', value: 1, class:"align-middle" %>
-              <%= f.radio_button :is_active, 0, class:"ml-3 align-middle" %>
-              <%= f.label :is_active, '販売停止中', value: 0, class:"align-middle" %>
+              <!--<#%= f.radio_button :is_active, 1, class:"ml-3 align-middle" %>-->
+              <!--<#%= f.label :is_active, '販売中', value: 1, class:"align-middle" %>-->
+              <!--<#%= f.radio_button :is_active, 0, class:"ml-3 align-middle" %>-->
+              <!--<#%= f.label :is_active, '販売停止中', value: 0, class:"align-middle" %>-->
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :is_active, "販売中" %>
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active, "販売停止中" %>
             </td>
           </tr>
             <td></td>
