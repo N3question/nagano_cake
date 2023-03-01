@@ -1,9 +1,11 @@
 class Admin::ItemsController < ApplicationController
   def index
+    @items = Item.all 
   end
 
   def new
     @item = Item.new
+    @item.is_active = 1
   end
   
   def create

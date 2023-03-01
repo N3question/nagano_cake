@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to: 'homes#top', as: 'top'
     resources :items, except: :destroy
-    resources :genres, only: [:index, :create, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy] # destroyは任意
     resources :customers, only: [:index, :show, :create, :edit, :update]
     resources :orders, only: [:show, :update]
     patch '/order_details/:id', to: 'order_details#update', as: 'order_detail'
