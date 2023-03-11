@@ -10,9 +10,10 @@
     
     <div class="col-9 mx-auto">
       
-      <table>
-        <tbody>
+      
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <table>
+          <tbody>
             <div class="field ml-5">
               <tr>
                 <td><%= f.label :email, 'メールアドレス' %></td>
@@ -29,9 +30,9 @@
                 <td><%= f.submit "ログイン", class:"btn btn-primary ml-5 px-5" %></td>
               </tr>
             </div>
+          </tbody>
+          </table>
           <% end %>
-        </tbody>
-      </table>
       
     </div><br>
     

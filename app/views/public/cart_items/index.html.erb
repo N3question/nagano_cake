@@ -1,2 +1,62 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row mt-5">
+      <div class="d-flex align-items-end">
+        <h5 class="ml-2 mb-4 bg-light">　ショッピングカート　</h5>
+      </div>
+      <div class="mb-4 ml-auto"> 
+        <!--まだカートを空にする機能はコントローラ内で定義していない。-->
+        <%= link_to 'カートを空にする', cart_items_destroy_all_path, method: :delete, class:"btn btn-danger", data: {confirm: "全て削除しますか？"} %>
+      </div>
+  </div>
+  
+  <div class="row">
+    <table class="table table-bordered">
+        <thead class="bg-light">    
+          <tr>
+            <th>商品名</th><th>単価（税込）</th><th>数量</th><th>小計</th><th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!--<#%= @items.each do |genre| %>        -->
+            <tr>
+              <td>
+                <!--商品画像-->
+                <!--商品名-->
+              </td>
+              <td>
+                <!--商品金額（税込）数字のみ-->
+              </td>
+              <td>
+                <!--商品の数量-->
+              </td>
+              <td>
+                <!--削除する機能は未実装-->
+                <% link_to '削除する',root_path,
+                method: :delete, class:"btn btn-danger", data: {confirm: "削除しますか？"} %>
+              </td>
+            </tr>
+          <!--<#% end %>-->
+       </tbody>
+    </table>
+  </div>
+  
+  <div class="row d-flex align-items-center">
+      <div>
+        <%= link_to '買い物を続ける', items_path, class:"btn btn-primary btn-sm ml-5" %>
+      </div>
+    
+      <div class="ml-auto align-middle">
+        <table class="table table-bordered">
+            <tr>
+              <th class="pr-5 bg-light">合計金額</th>
+              <td class="pr-5">金額を入れる。</td>
+            </tr>
+        </table>
+      </div>
+  </div>
+  
+  <div class="row">
+    <%= link_to '情報入力に進む', new_order_path, class:"btn btn-success mx-auto mt-5" %>
+  </div>
+</div>

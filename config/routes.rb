@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
+  ## devise関係①
   # 顧客用
   # URL /customers/sign_in...
   devise_for :customers, skip: [:passwords], controllers: {
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
+  ## 個別のURL ②
+  ## resources ③ ...採用順位が高いので下に持ってくる。
   scope module: :public do
     root "homes#top"
     get '/', to: 'homes#top', as: 'top'
@@ -24,11 +27,12 @@ Rails.application.routes.draw do
     patch '/customers/information', to: 'customers#update', as: 'information'
     get '/customers/unsubscribe', to: 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/withdraw', to: 'customers#withdraw', as: 'withdraw'
+    delete '/cart_items/destroy_all' # 修正！
     resources :cart_items, only: [:index, :update, :destroy, :create]
-    delete '/cart_items/destroy_all'
-    resources :orders, only: [:new, :create, :index, :show]
+    
     post '/orders/comfirm', to: 'orders#comfirm', as: 'comfirm'
     get '/orders/complete', to: 'orders#complete', as: 'complete'
+    resources :orders, only: [:new, :create, :index, :show] 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
     

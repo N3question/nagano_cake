@@ -5,9 +5,10 @@
   
   <div class="row mx-5">
     <div class="col-8 mx-5">
-      <table>
-        <tbody>
-          <%= form_with model: [:admin, @item], local: true do |f| %>
+
+        <%= form_with model: [:admin, @item], local: true do |f| %>
+          <table>
+          <tbody>
           <tr>
             <td>商品画像</td>
             <td class="align-middle">
@@ -49,9 +50,10 @@
               </div>
             </td>
           </tr>
+          </tbody>
+          </table>
           <% end %>
-        </tbody>
-      </table>
+          
     </div>
   </div>
 </div>

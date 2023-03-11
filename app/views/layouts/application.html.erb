@@ -2,10 +2,21 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <style>
+      .bi-plus-circle{
+        font-size: 40px;
+        color: gray;
+        filter: drop-shadow(2px 2px 0px #DDD);
+        /*filter: drop-shadow(左右の位置px 上下の位置px ぼかし具合px 色);*/
+      }
+      .my-bt:hover .bi-plus-circle {
+	      color: black;
+      }
+    </style>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -18,14 +29,103 @@
           <%= link_to "LOGO", new_admin_session_path, class:"text-dark text-decoration-none" %>
         </h3>
         
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                         <span class="navbar-toggler-icon"></span>
-          </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                       <span class="navbar-toggler-icon"></span>
+        </button>
           
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <!--<#% if admin_signed_in? %>-->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            
+          <% if admin_signed_in? %>
             <ul class="list-inline">
+              <li class="list-inline-item">
+                <%= link_to '商品一覧', admin_items_path, class:"btn btn-outline-dark btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '会員一覧', admin_customers_path, class:"btn btn-outline-dark btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文履歴一覧', admin_top_path, class:"btn btn-outline-dark btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'ジャンル一覧', admin_genres_path, class:"btn btn-outline-dark btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-outline-dark btn-sm"%>
+              </li>
+            </ul>
+            
+          <!--<#% if customer_signed_in? %>-->
+          <% elsif customer_signed_in? %>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <%= link_to 'マイページ', my_page_path, class:"btn btn-outline-dark btn-sm" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '商品一覧', items_path, class:"btn btn-outline-dark btn-sm" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'カート', cart_items_path, class:"btn btn-outline-dark btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-outline-dark btn-sm"%>
+              </li>
+            </ul>
+          <% else %>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <%= link_to 'top', top_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'About', about_path, class:"btn btn-outline-dark btn-sm" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '新規会員登録', new_customer_registration_path, class:"btn btn-outline-dark btn-sm" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-outline-dark btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '商品一覧', items_path, class:"btn btn-outline-dark btn-sm" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '商品詳細', url="/items/show", class:"btn btn-outline-warning btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'カート', cart_items_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文情報入力', new_order_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文情報確認', url="", class:"btn btn-outline-warning btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文完了画面', complete_path, class:"btn btn-outline-danger btn-sm" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to 'マイページ', my_page_path, class:"btn btn-outline-danger btn-sm" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '退会確認画面', unsubscribe_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '会員情報編集', edit_information_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '配送先登録/一覧', addresses_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '配送先編集', url="", class:"btn btn-outline-warning btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文履歴一覧', orders_path, class:"btn btn-outline-danger btn-sm"%>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to '注文履歴詳細', root_path, class:"btn btn-outline-warning btn-sm"%>
+              </li>
+            </ul>
+            <ul>
               <li class="list-inline-item">
                 <%= link_to '管理者ログイン', new_admin_session_path, class:"btn btn-outline-info btn-sm"%>
               </li>
@@ -62,89 +162,16 @@
               <li class="list-inline-item">
                 <%= link_to '注文履歴詳細', url="", class:"btn btn-outline-success btn-sm"%>
               </li>
-              <!--<li class="list-inline-item">-->
-              <!--  <#%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-outline-success btn-sm"%>-->
-              <!--</li>-->
-            <!--<#% end %>-->
-            </ul>
-            <% if customer_signed_in? %>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <%= link_to 'マイページ', my_page_path, class:"btn btn-outline-dark btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '商品一覧', items_path, class:"btn btn-outline-dark btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'カート', cart_items_path, class:"btn btn-outline-dark btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-outline-dark btn-sm"%>
-              </li>
-            </ul>
-            <% else %>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <%= link_to 'top', top_path, class:"btn btn-outline-danger btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'About', about_path, class:"btn btn-outline-dark btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '新規会員登録', new_customer_registration_path, class:"btn btn-outline-dark btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-outline-dark btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '商品一覧', items_path, class:"btn btn-outline-dark btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '商品詳細', url="/items/show", class:"btn btn-outline-warning btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'カート', cart_items_path, class:"btn btn-outline-warning btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '注文情報入力', new_order_path, class:"btn btn-outline-danger btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '注文情報確認', url="", class:"btn btn-outline-warning btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '注文完了画面', complete_path, class:"btn btn-outline-danger btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'マイページ', my_page_path, class:"btn btn-outline-danger btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '退会確認画面', unsubscribe_path, class:"btn btn-outline-danger btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '会員情報編集', edit_information_path, class:"btn btn-outline-danger btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '配送先登録/一覧', addresses_path, class:"btn btn-outline-danger btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '配送先編集', url="", class:"btn btn-outline-warning btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '注文履歴一覧', orders_path, class:"btn btn-outline-danger btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '注文履歴詳細', root_path, class:"btn btn-outline-warning btn-sm"%>
-              </li>
             </ul>
           <% end %>
           <!--検索フォーム-->
-            <div class="col-md-3 input-group">
+          <div class="col-md-3 input-group"><br />
               <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="Search"></input>
               <span class="input-group-btn input-group-append">
-              <submit type="submit" id="btn-search" class="btn btn-primary"><i class="far fa-search"></i>検索</submit>
+              <submit type="submit" id="btn-search" class="btn btn-secondary"><i class="far fa-search"></i></submit>
               </span>
-            </div>
           </div>
+        </div>
       </nav>
     </header>
     

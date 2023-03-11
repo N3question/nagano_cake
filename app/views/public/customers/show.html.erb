@@ -1,2 +1,36 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container my-5">
+  <div class="row">
+      <h5 class="ml-5 mb-4 bg-light">　マイページ　</h5>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7">
+      <table>
+          <tr>
+            <th>登録情報</th>
+            <td class="pl-4"><%= link_to '編集する', edit_information_path, class:"btn btn-success btn-sm px-3" %></td>
+          </tr>
+      </table>
+    
+      <table class="table table-bordered mt-3">
+        <tr> <th class="bg-light">氏名</th><td>カスタマー名を入れる。</td> </tr>
+        <tr> <th class="bg-light">カナ</th><td>カスタマー名（カナ）を入れる。</td> </tr>
+        <tr> <th class="bg-light">郵便番号</th><td>郵便番号を入れる。</td> </tr>
+        <tr> <th class="bg-light">住所</th><td>住所を入れる。</td> </tr>
+        <tr> <th class="bg-light">電話番号</th><td>電話番号を入れる。</td> </tr>
+        <tr> <th class="bg-light">メールアドレス</th><td>メールアドレスを入れる。</td> </tr>
+      </table>
+      
+      <table>
+          <tr>
+            <th>配送先</th>
+            <td class="pl-4"><%= link_to '一覧をみる', addresses_path, class:"btn btn-primary btn-sm px-4" %></td>
+          </tr>
+          <tr>
+            <th>注文履歴</th>
+            <td class="pl-4"><%= link_to '一覧をみる', orders_path, class:"btn btn-primary btn-sm px-4" %></td>
+          </tr>
+      </table>
+    </div>
+  </div>
+</div>
