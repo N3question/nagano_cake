@@ -12,8 +12,10 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true
   validates :address, presence: true
   validates :telephone_number, presence: true
-  validates :password, presence: true, length: {minimum: 6}
-  validates :encrypted_password, presence: true
+  
+  # 以下元々の機能についているのでいらない。
+  # validates :password, presence: true, length: {minimum: 6}
+  # validates :encrypted_password　, presence: true
   
   # has_secure_password validations: true
   # validates :mail, presence: true, uniqueness: true

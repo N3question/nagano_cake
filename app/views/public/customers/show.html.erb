@@ -13,12 +13,12 @@
       </table>
     
       <table class="table table-bordered mt-3">
-        <tr> <th class="bg-light">氏名</th><td>カスタマー名を入れる。</td> </tr>
-        <tr> <th class="bg-light">カナ</th><td>カスタマー名（カナ）を入れる。</td> </tr>
-        <tr> <th class="bg-light">郵便番号</th><td>郵便番号を入れる。</td> </tr>
-        <tr> <th class="bg-light">住所</th><td>住所を入れる。</td> </tr>
-        <tr> <th class="bg-light">電話番号</th><td>電話番号を入れる。</td> </tr>
-        <tr> <th class="bg-light">メールアドレス</th><td>メールアドレスを入れる。</td> </tr>
+        <tr> <th class="bg-light">氏名</th><td><%= current_customer.last_name %>　<%= current_customer.first_name %></td> </tr>
+        <tr> <th class="bg-light">カナ</th><td><%= current_customer.last_name_kana %>　<%= current_customer.first_name_kana %></td> </tr>
+        <tr> <th class="bg-light">郵便番号</th><td><%= current_customer.postal_code %></td> </tr>
+        <tr> <th class="bg-light">住所</th><td><%= current_customer.address %></td> </tr>
+        <tr> <th class="bg-light">電話番号</th><td><%= current_customer.telephone_number %></td> </tr>
+        <tr> <th class="bg-light">メールアドレス</th><td><%= current_customer.email %></td> </tr>
       </table>
       
       <table>
