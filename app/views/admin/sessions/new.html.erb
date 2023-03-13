@@ -5,11 +5,11 @@
   
   <div class="row mx-5">
     <div class="col-8 mx-5">
-      
-          <table>
-            <tbody>
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                <div class="field ml-5">
+            <!--resourceはdeviseに元々ある機能で、Customer.newを代入するような役割を果たしている。-->
+            <!--<#%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
+            <%= form_with model: resource, url: session_path(resource_name) do |f| %>
+              <table>
+                <tbody>  
                   <tr>
                     <td><%= f.label :email, 'メールアドレス' %></td>
                     <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com", class:"ml-5 mb-2 form-control" %></td>
@@ -24,10 +24,9 @@
                     <td></td>
                     <td><%= f.submit "ログイン", class:"btn btn-primary btn-sm ml-5 px-5 mt-4" %></td>
                   </tr>
-                </div>
-              <% end %>
-            </tbody>
-          </table>
+                </tbody>
+              </table>  
+            <% end %>
 
     <%= render "admin/shared/links" %> <!--viewファイル直下のファイル名を変更 admins => admin-->
   </div>

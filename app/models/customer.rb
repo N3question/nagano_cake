@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :telephone_number, presence: true
   
-  # 以下元々の機能についているのでいらない。
+  # 以下deviseの元々の機能についているのでいらない。
   # validates :password, presence: true, length: {minimum: 6}
   # validates :encrypted_password　, presence: true
   

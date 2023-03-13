@@ -6,7 +6,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
   
-  def update # 現状：アップデートが成功しない。
+  def update # @をつけることでデータを引き継ぐことができる。
     @customer = current_customer
     if @customer.update!(customer_params)
       redirect_to addresses_path
