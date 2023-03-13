@@ -33,6 +33,12 @@
           <td class="text-nowrap">販売ステータス</td>
           <td><%= @item.is_active ? '販売中' : '販売休止中' %></td>
         </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= link_to '編集する', edit_admin_item_path(@item.id), class:"btn btn-success px-5 py-2 mt-4" %>
+          </td>
+        </tr>
       </table>
     </div>
   </div>

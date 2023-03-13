@@ -4,7 +4,7 @@
   </div>
   
   <div class="row mb-5">
-    <%= form_with model: @genre, url: '/admin/genres', method: :post do |f| %>
+    <%= form_with model:  [:admin, @genre], method: :post, local: true do |f| %>
       <table class="ml-2">
           <tr>
             <th>ジャンル名</th>
@@ -18,21 +18,21 @@
   <div class="row">
     <div class="">
       <table class="table">
-        <thead class="thead-light"> <!--追加-->
+        <thead class="bg-light">
             <tr> 
               <th>ジャンル</th>
               <th></th>
             </tr>
-        </thead> <!--追加-->
+        </thead>
         
-        <tbody> <!--追加-->
+        <tbody>
             <% @genres.each do |genre| %>
               <tr>
                 <td class="pr-5"><%= genre.name %></td>
                 <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-success ml-5 px-4" %></td>
               </tr>
             <% end %>
-        </tbody><!--追加-->
+        </tbody>
       </table>  
     </div>
   </div>
