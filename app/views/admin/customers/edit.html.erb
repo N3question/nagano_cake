@@ -1,2 +1,67 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container my-5 ">
+  <div class="row">
+      <h5 class="mb-5 bg-light">　<%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集　</h5>
+  </div>
+  
+  <div class="row ml-3">
+    <div class="col-8">
+        
+      <%= form_with model: [:admin, @customer], local: true do |f| %>
+      <table class="">
+          <tr>
+            <td>会員ID</td>
+            <td>
+              <div class="ml-5 mb-1" style="padding:6px 12px; width:200px;"><%= @customer.id %></div>
+            </td>
+          </tr>
+          <tr>
+            <td>氏名</td>
+            <td>
+              <%= f.text_field :last_name, class:"form-control ml-5 mb-1", style:"width:200px;" %>
+              <%= f.text_field :first_name, class:"form-control ml-5 mb-1", style:"width:200px;" %>
+            </td>
+          </tr>
+          <tr>
+            <td>フリガナ</td>
+            <td>
+              <%= f.text_field :last_name_kana, class:"form-control ml-5 mb-1", style:"width:200px;" %>
+              <%= f.text_field :first_name_kana, class:"form-control ml-5 mb-1", style:"width:200px;" %>
+            </td>
+          </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td><%= f.text_field :postal_code, class:"form-control ml-5 mb-1", style:"width:200px;" %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_area :address, class:"form-control ml-5 mb-1", style:"width:500px;" %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= f.text_field :telephone_number, class:"form-control ml-5 mb-1", style:"width:200px;" %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= f.text_field :email, class:"form-control ml-5 mb-1", style:"width:200px;" %></td>
+          </tr>
+          <tr>
+            <td>会員ステータス</td>
+            <td>
+              <%= f.radio_button :is_deleted, :false, class:"ml-5 my-3" %>
+              <%= f.label :is_deleted, "有効", class:"mb-0" %>
+              <%= f.radio_button :is_deleted, :true, class:"ml-4" %>
+              <%= f.label :is_deleted, "退会", class:"mb-0" %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+                <%= f.submit '変更を保存', class:"btn btn-success btn-lg ml-5 mt-3 px-4" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+        
+    </div>
+  </div>
+</div>

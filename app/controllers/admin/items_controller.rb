@@ -1,11 +1,11 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.all 
+    @items = Item.all
   end
 
   def new
     @item = Item.new
-    @item.is_active = 1
+    @item.is_active = 1 # 最初に「販売中」を選択させておく。
   end
   
   def create
@@ -30,9 +30,8 @@ class Admin::ItemsController < ApplicationController
   
   private
   
-  def item_params # エラー検出中。質問する。
+  def item_params
     params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :is_active) 
-    #.merge(genre_id: genre.id)
   end
   
 end

@@ -8,8 +8,8 @@ class Public::CustomersController < ApplicationController
   
   def update # @をつけることでデータを引き継ぐことができる。
     @customer = current_customer
-    if @customer.update!(customer_params)
-      redirect_to addresses_path
+    if @customer.update(customer_params)
+      redirect_to my_page_path
     else
       #updateを失敗すると編集ページへ
       render 'edit'

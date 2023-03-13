@@ -35,6 +35,6 @@ class Public::AddressesController < ApplicationController
   private
   # ストロングパラメータ
   def address_params
-    params.require(:address).permit(:postal_code, :address, :name)
+    params.require(:address).permit(:customer_id, :postal_code, :address, :name)
   end
 end

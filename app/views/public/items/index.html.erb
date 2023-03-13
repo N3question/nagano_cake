@@ -1,25 +1,24 @@
 <div class="container m-5">
   <div class="row">
 
-    <div class="col-md-4">
-      <div class="genre_search">
-        <table>
-          <tr>
-            <th class="border border-dark text-center text-nowrap px-5">ジャンル検索</th>
-          </tr>
-          <tr>
-            <td class="border border-dark p-2">ジャンルの一覧を表示？</td>
-          </tr>
-        </table>
+    <div class="col-md-3">
+      <div class="border-top border-left border-right border-dark">
+        <p class="text-nowrap text-center px-2 mb-0">ジャンル検索</p>
+      </div>
+      <div class="border border-dark p-4">
+        <% @genres.each do |genre| %>
+          <p class="">
+            <%= link_to root_path do %>
+              <%= genre.name %>
+            <% end %>
+          </p>
+        <% end %>
       </div>
     </div>
     
-    <div class="col-md-8">
-      <div class="genre_search">
-        <table>
-          <h4><strong>商品一覧</strong></h4><h6>全×件</h6>
-          <p>ページネーション入れる</p>
-        </table>
+    <div class="col-md-7 offset-md-1">
+      <div>
+        <h3><b>商品一覧</b></h3><h6>全x件</h6>
       </div>
     </div>
     
