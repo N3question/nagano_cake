@@ -1,26 +1,53 @@
 <div class="container m-5">
   <div class="row">
 
-    <div class="col-md-4">
-      <div class="genre_search">
-        <table>
-          <tr>
-            <th class="border border-dark text-center text-nowrap px-5">ジャンル検索</th>
-          </tr>
-          <tr>
-            <td class="border border-dark p-2">ジャンルの一覧を表示？</td>
-          </tr>
-        </table>
+    <div class="col-3">
+      <div class="border-top border-left border-right border-dark">
+        <p class="text-nowrap text-center px-2 mb-0">ジャンル検索</p>
+      </div>
+      <div class="border border-dark p-4">
+        <% @genres.each do |genre| %>
+          <p>
+            <%= link_to root_path do %>
+              <%= genre.name %>
+            <% end %>
+          </p>
+        <% end %>
       </div>
     </div>
     
-    <div class="col-md-8">
-      <div class="genre_search">
+    <div class="col-3 ml-3">
+        <% if @item.image.attached? %>
+            <%= image_tag @item.image, size: "250x180", class:"img-fluid", style:"max-width: 90%; , height: auto;", style:"object-fit: cover;" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "250x180", class:"img-fluid border", style:"max-width: 90%; , height: auto;", style:"object-fit: cover;" %>
+        <% end %>
+    </div>
+    
+    <div class="col-5">
         <table>
-          <h4><strong>商品詳細</strong></h4>
-          <p>（左）画像　（右）商品タイトル、説明、値段（税込）、[個数、カートに入れる]</p>
+          <tr>
+              <td><h4><b><%= @item.name %></b></h4></td>
+          </tr>
+          <tr>
+              <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+              <td>
+                <div class="mt-5">
+                    <h5 style="float:left">
+                      ￥<%= @item.add_tax_price.to_s(:delimited) %>
+                    </h5>
+                    <p class="small">税込</p>
+                </div>
+              </td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to 'カートに入れる', root_path, class:"btn btn-success btn-sm px-3 py-2 mt-4" %>
+            </td>
+          </tr>
         </table>
-      </div>
     </div>
     
   </div>

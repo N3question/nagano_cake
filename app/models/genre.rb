@@ -1,5 +1,5 @@
 class Genre < ApplicationRecord
 
-  has_many :items # アソシエーション
+  has_many :items, dependent: :destroy # アソシエーション
 
 end
