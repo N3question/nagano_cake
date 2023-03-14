@@ -4,13 +4,15 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @item= Item.new
     @item.is_active = 1 # 最初に「販売中」を選択させておく。
   end
   
+  # いいね機能の内容で実装可能
+  # itemからcart_itemへフォームで
   def create
-    item = Item.new(item_params)
-    item.save
+    create = Item.new(item_params)
+    create.save
     # binding.pry # データを止める
     redirect_to admin_item_path(item.id)
   end

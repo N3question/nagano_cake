@@ -1,5 +1,4 @@
 <div class="container">
-  
   <div class="row">
       <div>
         <h5 class="mt-5 ml-5 mb-0 bg-light">　商品一覧　</h5>
@@ -30,12 +29,21 @@
                 </td>
                 <td><%= item.price.to_s(:delimited) %></td>
                 <td><%= item.genre_id %></td>
-                <td><%= item.is_active ? '販売中' : '販売休止中'  %></td>
+                <td>
+                  <!--販売ステータスの色変更-->
+                  <!--基本的にif式はtrueで返ってくる。-->
+                  <!--pタグは１つの要素をまとめるブロック要素、
+                  　　strongタグはインライン要素-->
+                  <% if item.is_active %>
+                    <p class="text-success"><strong>販売中</strong></p>
+                  <% else %>
+                    <p class="text-secondary"><strong>販売停止中</strong></p>
+                　<% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>
         </table>
     </div>
   </div>
-  
 </div>

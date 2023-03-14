@@ -1,8 +1,8 @@
 class CartItem < ApplicationRecord
   
   has_one_attached :image
-  belongs_to :customers # アソシエーション
-  belongs_to :items # アソシエーション
+  belongs_to :item # アソシエーション
+  belongs_to :customer # アソシエーション
   
   # 消費税を加えた商品価格
   def add_tax_price
