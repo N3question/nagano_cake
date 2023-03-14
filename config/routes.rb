@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     get '/', to: 'homes#top', as: 'top'
-    resources :items, only: [:index, :new, :show, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :cart, only: [:show]
     resources :genres, only: [:index, :create, :edit, :update, :destroy] # destroyは任意
     resources :customers, only: [:index, :show, :create, :edit, :update]

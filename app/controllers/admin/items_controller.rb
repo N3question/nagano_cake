@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def new
@@ -11,10 +11,11 @@ class Admin::ItemsController < ApplicationController
   # いいね機能の内容で実装可能
   # itemからcart_itemへフォームで
   def create
-    create = Item.new(item_params)
-    create.save
+    @item = Item.new(item_params)
+    # @item.user_id = current_user.id
+    @item.save!
     # binding.pry # データを止める
-    redirect_to admin_item_path(item.id)
+    redirect_to admin_item_path(@item.id)
   end
 
   def show
@@ -29,6 +30,13 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update(item_params)
     redirect_to admin_items_path
+  end
+  
+  # 任意アクション
+  def destroy
+    item = Item.find(params[:id])  # データ（レコード）を1件取得
+    item.destroy  # データ（レコード）を削除
+    redirect_to admin_items_path  # 投稿一覧画面へリダイレクト  
   end
   
   private

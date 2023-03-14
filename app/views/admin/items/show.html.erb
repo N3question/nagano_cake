@@ -43,6 +43,7 @@
           <td></td>
           <td>
             <%= link_to '編集する', edit_admin_item_path(@item.id), class:"btn btn-success px-5 py-2 mt-4" %>
+            <%= link_to '削除', admin_item_path(@item.id), method: :delete, class:"btn btn-danger px-3 py-2 mt-4 ml-4", data: {confirm: "削除しますか？"}  %>
           </td>
         </tr>
       </table>

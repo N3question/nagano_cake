@@ -1,4 +1,4 @@
-<div class="container my-5 ">
+<div class="container">
   <div class="row">
       <h5 class="ml-5 mb-5 bg-light">　会員一覧　</h5>
   </div>
@@ -17,7 +17,7 @@
                   <td><%= customer.id %></td>
                   <td>
                     <%= link_to admin_customer_path(customer.id) do %>
-                      <%= customer.last_name %><%= customer.first_name %>
+                      <%= customer.last_name %> <%= customer.first_name %>
                     <% end %>
                   </td>
                   <td><%= customer.email %></td>
@@ -32,6 +32,24 @@
               <% end %>
             </tbody>
           </table>
+          <%= paginate @customers %>
+          <!--<nav aria-label="Page navigation">-->
+          <!--  <ul class="pagination">-->
+          <!--      <li class="page-item">-->
+          <!--        <a class="page-link" href="#" aria-label="前へ">-->
+          <!--          <span aria-hidden="true">&laquo;</span>-->
+          <!--        </a>-->
+          <!--      </li>-->
+          <!--      <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+          <!--      <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+          <!--      <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+          <!--      <li class="page-item">-->
+          <!--        <a class="page-link" href="#" aria-label="次へ">-->
+          <!--          <span aria-hidden="true">&raquo;</span>-->
+          <!--        </a>-->
+          <!--      </li>-->
+          <!--  </ul>-->
+          <!--</nav>-->
     </div>
   </div>
 </div>
