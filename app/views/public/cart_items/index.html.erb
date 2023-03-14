@@ -18,7 +18,7 @@
         </thead>
 
         <tbody>
-          <!--<#%= @items.each do |genre| %>        -->
+          <%= @cart_items.each do |cart_item| %>        
             <tr>
               <td>
                 <!--商品画像-->
@@ -36,10 +36,11 @@
                 method: :delete, class:"btn btn-danger", data: {confirm: "削除しますか？"} %>
               </td>
             </tr>
-          <!--<#% end %>-->
+          <% end %>
        </tbody>
     </table>
   </div>
+  
   
   <div class="row d-flex align-items-center">
       <div>
@@ -50,7 +51,7 @@
         <table class="table table-bordered">
             <tr>
               <th class="pr-5 bg-light">合計金額</th>
-              <td class="pr-5">金額を入れる。</td>
+              <td class="pr-5"><!--<#%= @.price.to_s(:delimited) %>--></td>
             </tr>
         </table>
       </div>

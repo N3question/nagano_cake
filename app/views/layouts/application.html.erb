@@ -29,7 +29,8 @@
             <h3 class="my-4 px-5">
               <%= link_to "LOGO", admin_top_path, class:"text-dark text-decoration-none" %>
             </h3>
-          <% elsif customer_signed_in? %>
+          <!--<#% elsif customer_signed_in? %>-->
+          <% else %>
             <h3 class="my-4 px-5">
               <%= link_to "LOGO", top_path, class:"text-dark text-decoration-none" %>
             </h3>

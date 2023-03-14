@@ -1,10 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
-    @items = Item.all
-    @cart_item = @items.all
-    # #合計金額の初期値は0円
-    @total = 0 
   end
   
   def update
@@ -20,5 +16,11 @@ class Public::CartItemsController < ApplicationController
   end
   
   def create
+  end
+  
+  private
+  
+  def cart_item_params
+    params.require(:cart_item).permit(:image, :item_id, :name, :customer_id, :amount) 
   end
 end
