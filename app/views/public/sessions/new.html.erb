@@ -16,18 +16,18 @@
           <tbody>
             <div class="field ml-5">
               <tr>
-                <td><%= f.label :email, 'メールアドレス' %></td>
-                <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com", class:"ml-5 w-100" %></td>
+                <td><%= f.label :email, 'メールアドレス', class:"mb-0" %></td>
+                <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com", class:"ml-5 form-control", style:"width:400px;" %></td>
               </tr>
           
               <tr>
-                <td><%= f.label :password, 'パスワード' %></td>
-                <td><%= f.password_field :password, autocomplete: "current-password", class:"ml-5 w-100" %></td>
+                <td><%= f.label :password, 'パスワード', class:"mb-0 mt-2" %></td>
+                <td><%= f.password_field :password, autocomplete: "current-password", class:"mt-2 ml-5 form-control", style:"width:400px;" %></td>
               </tr>
               
               <tr>
                 <td></td>
-                <td><%= f.submit "ログイン", class:"btn btn-primary ml-5 px-5" %></td>
+                <td><%= f.submit "ログイン", class:"btn btn-primary mt-4 ml-5 px-5" %></td>
               </tr>
             </div>
           </tbody>
@@ -39,7 +39,7 @@
     <div class="row ml-5">
       <h6 class="bg-light">　会員登録がお済みでない方　</h6>
     </div>
-    <div class="col-9 mx-auto">
+    <div class="col-9 mx-auto mt-4">
       <!--以下のファイルを直接変更するか、link_toを使って新しく記述するかのいずれかで変更可能-->
       <%= render "public/shared/links" %> <!--viewファイル直下のファイル名を変更 publics => public-->
     </div>

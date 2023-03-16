@@ -5,6 +5,7 @@
   
   <div class="row">
     <div class="col-8 mx-auto">
+      
           <table class="table">
             <thead class="bg-light">
                 <tr>
@@ -32,24 +33,12 @@
               <% end %>
             </tbody>
           </table>
-          <%= paginate @customers %>
-          <!--<nav aria-label="Page navigation">-->
-          <!--  <ul class="pagination">-->
-          <!--      <li class="page-item">-->
-          <!--        <a class="page-link" href="#" aria-label="前へ">-->
-          <!--          <span aria-hidden="true">&laquo;</span>-->
-          <!--        </a>-->
-          <!--      </li>-->
-          <!--      <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-          <!--      <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-          <!--      <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-          <!--      <li class="page-item">-->
-          <!--        <a class="page-link" href="#" aria-label="次へ">-->
-          <!--          <span aria-hidden="true">&raquo;</span>-->
-          <!--        </a>-->
-          <!--      </li>-->
-          <!--  </ul>-->
-          <!--</nav>-->
+          <div class="my-4">
+            <div class="d-flex justify-content-center">
+              <%= paginate @customers %>
+            </div>
+          </div>
+          
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 class Public::AddressesController < ApplicationController
   def index
     @address = Address.new
-    @addresses = Address.all
+    @addresses = Address.where(customer_id: current_customer.id) # カスタマーごとの配送先を表示
   end
 
   def edit
@@ -9,7 +9,7 @@ class Public::AddressesController < ApplicationController
   end
   
   def create
-    # １.&2. データを受け取り新規登録するためのインスタンス作成
+    # # １.&2. データを受け取り新規登録するためのインスタンス作成
     address = Address.new(address_params)
     # アソシエーションでログインカスタマーのアドレスを検出させる。
     address.customer_id = current_customer.id
@@ -37,6 +37,6 @@ class Public::AddressesController < ApplicationController
   private
   # ストロングパラメータ
   def address_params
-    params.require(:address).permit(:postal_code, :address, :name)
+    params.require(:address).permit(:customer_id, :postal_code, :address, :name)
   end
 end

@@ -12,6 +12,7 @@
   
   <div class="row">
     <div class="col-12 mx-auto">
+      
           <table class="table">
             <thead class="bg-light">
               <tr>
@@ -44,9 +45,12 @@
             <% end %>
           </tbody>
         </table>
-        <div class="mb-4">
-          <%= paginate @items %>
+        <div class="my-4">
+          <div class="d-flex justify-content-center">
+            <%= paginate @items %>
+          </div>
         </div>
+        
     </div>
   </div>
 </div>
