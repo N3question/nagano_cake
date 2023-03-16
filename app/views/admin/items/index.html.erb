@@ -1,17 +1,17 @@
-<div class="container my-5">
-  <div class="row">
-      <div>
+<div class="container mt-5">
+  <div class="row mb-3">
+      <div class="d-flex align-items-center">
         <h5 class="ml-5 mb-0 bg-light">　商品一覧　</h5>
       </div>
-      <div class="my-4 ml-auto mr-2">
+      <div class="ml-auto mt-0 mr-5">
         <%= link_to new_admin_item_path, class: "my-bt" do%>
-          <i class="bi bi-plus-circle"></i></div>
+          <i class="bi bi-plus-circle"></i>
         <% end %>
       </div>
   </div>
   
   <div class="row">
-    <div class="col-8 mx-auto">
+    <div class="col-12 mx-auto">
           <table class="table">
             <thead class="bg-light">
               <tr>
@@ -22,13 +22,13 @@
               <% @items.each do |item| %>
                 <tr>
                   <td><%= item.id %></td>
-                  <td>
-                    <%= link_to admin_item_path(item.id) do %>
+                  <td style="text-decoration: underline;">
+                    <%= link_to admin_item_path(item.id), class:"text-dark" do %>
                       <%= item.name %>
                     <% end %>
                   </td>
                   <td><%= item.price.to_s(:delimited) %></td>
-                  <td><%= item.genre_id %></td>
+                  <td><%= item.genre.name %></td>
                   <td>
                     <!--販売ステータスの色変更-->
                     <!--基本的にif式はtrueで返ってくる。-->
@@ -44,7 +44,9 @@
             <% end %>
           </tbody>
         </table>
-        <%= paginate @items %>
+        <div class="mb-4">
+          <%= paginate @items %>
+        </div>
     </div>
   </div>
 </div>

@@ -23,110 +23,130 @@
 
   <body class="d-flex flex-column vh-100">
     <header class="border-bottom border-dark">
-      
-      <nav class="navbar navbar-expand-lg navbar-light">
-          <% if admin_signed_in? %>
-            <h3 class="my-4 px-5">
-              <%= link_to "LOGO", admin_top_path, class:"text-dark text-decoration-none" %>
-            </h3>
-          <!--<#% elsif customer_signed_in? %>-->
-          <% else %>
-            <h3 class="my-4 px-5">
-              <%= link_to "LOGO", top_path, class:"text-dark text-decoration-none" %>
-            </h3>
-          <% end %>
-        
-          <% if customer_signed_in? %>
-            <p class="my-4">ようこそ、<%= current_customer.last_name %>さん！</p>
-          <% end %>
-        
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                         <span class="navbar-toggler-icon"></span>
-          </button>
+        <div class="row">
           
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            
-          <% if admin_signed_in? %>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <%= link_to '商品一覧', admin_items_path, class:"btn btn-outline-dark btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '会員一覧', admin_customers_path, class:"btn btn-outline-dark btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '注文履歴一覧', admin_top_path, class:"btn btn-outline-dark btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'ジャンル一覧', admin_genres_path, class:"btn btn-outline-dark btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-outline-dark btn-sm"%>
-              </li>
-            </ul>
-            
-          <!--<#% if customer_signed_in? %>-->
-          <% elsif customer_signed_in? %>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <%= link_to 'マイページ', my_page_path, class:"btn btn-outline-dark btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '商品一覧', items_path, class:"btn btn-outline-dark btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'カート', cart_items_path, class:"btn btn-outline-dark btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-outline-dark btn-sm"%>
-              </li>
-            </ul>
-          <% else %>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <%= link_to 'About', about_path, class:"btn btn-outline-dark btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '商品一覧', items_path, class:"btn btn-outline-dark btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '新規会員登録', new_customer_registration_path, class:"btn btn-outline-dark btn-sm" %>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-outline-dark btn-sm"%>
-              </li>
-            </ul>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <%= link_to '管理者ログイン', new_admin_session_path, class:"btn btn-outline-info btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '商品一覧', admin_items_path, class:"btn btn-outline-info btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '会員一覧', admin_customers_path, class:"btn btn-outline-info btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '注文履歴一覧', admin_top_path, class:"btn btn-outline-info btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to 'ジャンル一覧・追加', admin_genres_path, class:"btn btn-outline-info btn-sm"%>
-              </li>
-              <li class="list-inline-item">
-                <%= link_to '注文履歴詳細', url="", class:"btn btn-outline-success btn-sm"%>
-              </li>
-            </ul>
-          <% end %>
-          <!--検索フォーム-->
-          <div class="col-md-3 input-group"><br />
-              <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="Search"></input>
-              <span class="input-group-btn input-group-append">
-              <submit type="submit" id="btn-search" class="btn btn-secondary"><i class="far fa-search"></i></submit>
-              </span>
+          <div class="col-3 ml-4 d-flex align-items-center">
+            <!--管理者がログインorカスタマーがログインで遷移先を変更-->
+            <% if admin_signed_in? %>
+              <h3 class="my-4 py-2 border text-center" style="width:200px;">
+                <%= link_to "LOGO", admin_top_path, class:"text-dark text-decoration-none" %>
+              </h3>
+            <% else %>
+              <h3 class="my-4 py-2 border text-center" style="width:200px;">
+               <%= link_to "LOGO", top_path, class:"text-dark text-decoration-none" %>
+              </h3>
+            <% end %>
           </div>
+      
+          <div class="col-8 d-flex align-items-center ml-auto">
+            <!--カスタマーがログイン時に名前入りのウェルカムメッセージを表示-->
+            <div class="ml-auto mr-5" style="">
+              <% if customer_signed_in? %>
+                <p class="my-4 small">ようこそ、<%= current_customer.last_name %>さん！</p>
+              <% end %>
+            </div>
+                
+            <nav class="navbar navbar-expand-lg navbar-light flex-column mr-3 my-3" style="float:right;">
+                <!--ナビバーのハンバーガーボタン-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+          
+                <!--ドロップダウンする範囲-->
+                <div class="collapse navbar-collapse" id="navbarNavDropdown" class="d-flex align-items-center">
+                  
+                    <!--管理者がログインしている時のナビバー-->
+                    <% if admin_signed_in? %>
+                    <ul class="list-inline" style="margin:0px;">
+                      <li class="list-inline-item">
+                        <%= link_to '商品一覧', admin_items_path, class:"btn btn-outline-dark btn-sm"%>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to '会員一覧', admin_customers_path, class:"btn btn-outline-dark btn-sm"%>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to '注文履歴一覧', admin_top_path, class:"btn btn-outline-dark btn-sm"%>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to 'ジャンル一覧', admin_genres_path, class:"btn btn-outline-dark btn-sm"%>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-outline-dark btn-sm"%>
+                      </li>
+                    </ul>
+            
+                    <!--カスタマーがログインしている時のナビバー-->
+                    <% elsif customer_signed_in? %>
+                    <ul class="list-inline" style="margin:0px;">
+                      <li class="list-inline-item">
+                        <%= link_to 'マイページ', my_page_path, class:"btn btn-outline-dark btn-sm" %>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to '商品一覧', items_path, class:"btn btn-outline-dark btn-sm" %>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to 'カート', cart_items_path, class:"btn btn-outline-dark btn-sm"%>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-outline-dark btn-sm"%>
+                      </li>
+                    </ul>
+                    
+                    <!--誰もログインしていない時-->
+                    <% else %>
+                    <!--カスタマー側-->
+                    <ul class="list-inline" style="margin:0px;">
+                      <li class="list-inline-item">
+                        <%= link_to 'About', about_path, class:"btn btn-outline-dark btn-sm" %>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to '商品一覧', items_path, class:"btn btn-outline-dark btn-sm" %>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to '新規会員登録', new_customer_registration_path, class:"btn btn-outline-dark btn-sm" %>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-outline-dark btn-sm"%>
+                      </li>
+                    </ul>
+                    
+                    <!--管理者側-->
+            　       <ul class="list-inline" style="margin:0px;">
+                      <li class="list-inline-item">
+                        <%= link_to '管理者ログイン', new_admin_session_path, class:"btn btn-outline-info btn-sm"%>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to '商品一覧', admin_items_path, class:"btn btn-outline-info btn-sm"%>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to '会員一覧', admin_customers_path, class:"btn btn-outline-info btn-sm"%>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to '注文履歴一覧', admin_top_path, class:"btn btn-outline-info btn-sm"%>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to 'ジャンル一覧・追加', admin_genres_path, class:"btn btn-outline-info btn-sm"%>
+                      </li>
+                      <li class="list-inline-item">
+                        <%= link_to '注文履歴詳細', url="", class:"btn btn-outline-success btn-sm"%>
+                      </li>
+                    </ul>
+                    <% end %>
+                </div>
+                
+                <!--検索フォーム-->
+                <div class="input-group mt-3" style="width:250px;"><br />
+                  <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="Search"></input>
+                  <span class="input-group-btn input-group-append">
+                    <submit type="submit" id="btn-search" class="btn btn-secondary"><i class="bi bi-search"></i></submit>
+                  </span>
+                </div>
+                
+            </nav>
+          </div>
+          
         </div>
-      </nav>
     </header>
     
     <main>

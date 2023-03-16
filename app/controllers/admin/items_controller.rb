@@ -9,7 +9,7 @@ class Admin::ItemsController < ApplicationController
   end
   
   # いいね機能の内容で実装可能
-  # itemからcart_itemへフォームで
+  # itemからcart_itemへフォームで。
   def create
     @item = Item.new(item_params)
     # @item.user_id = current_user.id

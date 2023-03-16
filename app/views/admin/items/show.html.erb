@@ -3,15 +3,15 @@
     <h5 class="ml-5 mb-5 bg-light">　商品詳細　</h5>
   </div>
 
-  <div class="row">
-    <div class="col-4">
+  <div class="row ml-5">
+    <div class="col-3">
         <% if @item.image.attached? %>
             <%= image_tag @item.image, size: "250x180", class:"img-fluid", style:"max-width: 90%; , height: auto;", style:"object-fit: cover;" %>
         <% else %>
           <%= image_tag 'no_image', size: "250x180", class:"img-fluid border", style:"max-width: 90%; , height: auto;", style:"object-fit: cover;" %>
         <% end %>
     </div>
-    <div class="col-7">
+    <div class="col-8 ml-3">
       <table>
         <tr>
           <td class="text-nowrap">商品名</td>
@@ -23,11 +23,11 @@
         </tr>
         <tr>
           <td class="text-nowrap">ジャンル</td>
-          <td><%= @item.genre_id %></td>
+          <td><%= @item.genre.name %></td>
         </tr>
         <tr>
-          <td class="text-nowrap">税込価格<br>(税抜価格)</td>
-          <td><%= @item.add_tax_price.to_s(:delimited) %> （<%= @item.price.to_s(:delimited) %>）円</td>
+          <td class="text-nowrap">税込価格<br><small>(税抜価格)</small></td>
+          <td class="middle"><%= @item.add_tax_price.to_s(:delimited) %> （<%= @item.price.to_s(:delimited) %>）円</td>
         </tr>
         <tr>
           <td class="text-nowrap">販売ステータス</td>
