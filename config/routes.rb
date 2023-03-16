@@ -21,15 +21,20 @@ Rails.application.routes.draw do
     root "homes#top"
     get '/', to: 'homes#top', as: 'top'
     get '/about', to: 'homes#about', as: 'about'
-    resources :items, only: [:index, :show]
+    
+    # 商品に対して（カート内に入る）数量を結びつける。(ネストする)
+    # params[:item_id]でItemのidが取得可能
+    get '/cart_items', to: 'cart_items#index', as: 'cart_items'
+    resources :items, only: [:index, :show] do
+      delete '/cart_items/destroy_all'
+      resource :cart_item, only: [ :update, :destroy, :create]
+    end
+    
     get '/customers/my_page', to: 'customers#show', as: 'my_page'
     get '/customers/information/edit', to: 'customers#edit', as: 'edit_information'
     patch '/customers/information', to: 'customers#update', as: 'information'
     get '/customers/unsubscribe', to: 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/withdraw', to: 'customers#withdraw', as: 'withdraw'
-    delete '/cart_items/destroy_all' # 修正！
-    resources :cart_items, only: [:index, :update, :destroy, :create]
-    
     post '/orders/comfirm', to: 'orders#comfirm', as: 'comfirm'
     get '/orders/complete', to: 'orders#complete', as: 'complete'
     resources :orders, only: [:new, :create, :index, :show] 
@@ -40,7 +45,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to: 'homes#top', as: 'top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
-    resources :cart, only: [:show]
     resources :genres, only: [:index, :create, :edit, :update, :destroy] # destroyは任意
     resources :customers, only: [:index, :show, :create, :edit, :update]
     resources :orders, only: [:show, :update]

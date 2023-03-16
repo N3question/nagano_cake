@@ -46,8 +46,12 @@
             <td>
               <!--form_withを使う。-->
               <!--<#%= f.hidden_field :保存したいカラム名, value: 保存したいデータ %>-->
-              <p class="mt-4" style="float:left">個数選択のプルダウン</p>
-              <%= link_to 'カートに入れる', root_path, class:"btn btn-success btn-sm px-3 py-2 mt-4 ml-5" %>
+              <!--<#%= f.select :name, {sample1: 1, sample2: 2, sample3: 3} %>-->
+              <%= form_with model: @item do |f| %> 
+                <%= f.hidden_field :amount, :value => @item.id %>
+                <%= f.select :amount, [[1, 1], [2, 2], [3, 3], [4, 4]], include_blank: "個数選択", class:"form-control mt-4" %>
+                <%= f.submit 'カートに入れる', class:"btn btn-success btn-sm px-3 py-2 ml-5 my-4" %>
+              <% end %>
             </td>
           </tr>
         </table>

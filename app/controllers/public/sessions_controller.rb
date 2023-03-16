@@ -3,7 +3,18 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   # before_action :customer_state, only: [:create]
-
+  before_action :reject_deleted_user, only: [:create]
+  
+  def reject_deleted_user
+    @customer = Customer.find_by(email: params[:email])
+    if @customer
+      if @customer.valid_password?(params[:user][:password]) && @customer.is_deleted == true
+        flash[:notice] = "退会済みの為、再登録が必要です。"
+        redirect_to new_customer_registration_path
+      end
+    end
+  end
+  
   # GET /resource/sign_in
   # def new
   #   super

@@ -1,6 +1,7 @@
 class Public::AddressesController < ApplicationController
   def index
     @address = Address.new
+    # 通常はここでidの定義をするが、アソシエーションで省略可能。
     @addresses = Address.where(customer_id: current_customer.id) # カスタマーごとの配送先を表示
   end
 

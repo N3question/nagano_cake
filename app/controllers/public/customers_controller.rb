@@ -16,10 +16,18 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+  #退会確認画面用のアクション
   def unsubscribe
+     @customer = current_customer
   end
   
+  #退会のアクション
   def withdraw
+    @customer = current_customer
+    @customer.update(is_deleted: true) #ここでis_deletedカラムの値をtrueに更新します。
+    reset_session #この記述で現在のログイン状況をリセットすることができます。
+    flash[:notice] = "退会が完了しました。" #フラッシュメッセージがあると親切ですね！
+    redirect_to root_path #処理完了後ルートパスへ遷移します。
   end
   
   private

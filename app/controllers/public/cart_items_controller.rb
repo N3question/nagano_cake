@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
+  
   def index
-    @cart_items = CartItem.all
   end
   
   def update
@@ -10,18 +11,14 @@ class Public::CartItemsController < ApplicationController
   end
   
   def destroy_all
-    CartItem.destroy_all
-    current_user.cart_item.destroy_all
-    redirect_to cart_items_path, notice: 'カートが空になりました。' 
   end
   
   def create
-    
   end
   
   private
   
   def cart_item_params
-    params.require(:cart_item).permit(:image, :item_id, :name, :customer_id, :amount) 
+    params.require(:cart_item).permit(:item_id, :customer_id, :amount) 
   end
 end
