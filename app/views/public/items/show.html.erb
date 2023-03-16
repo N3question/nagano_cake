@@ -18,13 +18,13 @@
     
     <div class="col-3 ml-3">
         <% if @item.image.attached? %>
-            <%= image_tag @item.image, size: "250x180", class:"img-fluid", style:"max-width: 90%; , height: auto;", style:"object-fit: cover;" %>
+            <%= image_tag @item.image, size: "250x180", style:"object-fit: cover;" %>
         <% else %>
-          <%= image_tag 'no_image', size: "250x180", class:"img-fluid border", style:"max-width: 90%; , height: auto;", style:"object-fit: cover;" %>
+          <%= image_tag 'no_image', size: "250x180", class:"border mr-3", style:"object-fit: cover;" %>
         <% end %>
     </div>
     
-    <div class="col-5">
+    <div class="col-5 mt-2">
         <table>
           <tr>
               <td><h4><b><%= @item.name %></b></h4></td>
@@ -47,10 +47,15 @@
               <!--form_withを使う。-->
               <!--<#%= f.hidden_field :保存したいカラム名, value: 保存したいデータ %>-->
               <!--<#%= f.select :name, {sample1: 1, sample2: 2, sample3: 3} %>-->
-              <%= form_with model: @item do |f| %> 
-                <%= f.hidden_field :amount, :value => @item.id %>
-                <%= f.select :amount, [[1, 1], [2, 2], [3, 3], [4, 4]], include_blank: "個数選択", class:"form-control mt-4" %>
-                <%= f.submit 'カートに入れる', class:"btn btn-success btn-sm px-3 py-2 ml-5 my-4" %>
+              <% if customer_signed_in? %>
+                <%= form_with model: @cart_item, data: { turbo: false } do |f| %> 
+                  <%= f.hidden_field :item_id, :value => @item.id %>
+                  <%= f.select :amount, [[1, 1], [2, 2], [3, 3], [4, 4]], include_blank: "個数選択", class:"form-control mt-4" %>
+                  <%= f.submit 'カートに入れる', class:"btn btn-success btn-sm px-3 py-2 ml-5 my-4" %>
+                <% end %>
+                  <!--<#%= form_with model: @cart_item, data: { turbo: false } do |f| %>-->
+                  <!--<#%= f.hidden_field :product_id, :value => @product.id %>-->
+                  <!--<#%= f.submit "Add to Cart", class:"w-full cursor-pointer focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" %>-->
               <% end %>
             </td>
           </tr>

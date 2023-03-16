@@ -6,10 +6,10 @@ class Public::SessionsController < Devise::SessionsController
   before_action :reject_deleted_user, only: [:create]
   
   def reject_deleted_user
-    @customer = Customer.find_by(email: params[:email])
+    @customer = Customer.find_by(email: params[:customer][:email])
     if @customer
-      if @customer.valid_password?(params[:user][:password]) && @customer.is_deleted == true
-        flash[:notice] = "退会済みの為、再登録が必要です。"
+      if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == true
+        flash[:notice] = "※退会済みの為、再登録が必要です。"
         redirect_to new_customer_registration_path
       end
     end

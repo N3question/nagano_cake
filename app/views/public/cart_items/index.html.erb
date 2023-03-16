@@ -5,7 +5,7 @@
       </div>
       <div class="mb-4 ml-auto"> 
         <!--まだカートを空にする機能はコントローラ内で定義していない。-->
-        <%= link_to 'カートを空にする', item_cart_items_destroy_all_path(:item_id), method: :delete, class:"btn btn-danger", data: {confirm: "全て削除しますか？"} %>
+        <%= link_to 'カートを空にする', cart_items_destroy_all_path(:item_id), method: :delete, class:"btn btn-danger", data: {confirm: "全て削除しますか？"} %>
       </div>
   </div>
   
@@ -18,12 +18,14 @@
         </thead>
 
         <tbody>
+          <% @cart_items.each do |cart_item| %>
             <tr>
               <td>
-                <!--<#%= cart_item.name %>-->
+                <%= cart_item.name %>
                 <!--商品名-->
               </td>
               <td>
+                <%= cart_item.count %>
                 <!--商品金額（税込）数字のみ-->
               </td>
               <td>
@@ -35,6 +37,7 @@
                 <!--method: :delete, class:"btn btn-danger", data: {confirm: "削除しますか？"} %>-->
               </td>
             </tr>
+          <% end %>
        </tbody>
     </table>
   </div>
