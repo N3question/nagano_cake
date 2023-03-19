@@ -15,8 +15,8 @@ class CartItem < ApplicationRecord
   end
   
   # 合計
-  def price_total
-   item.price * quantity
-  end
+ def price_total
+   item.price * amount
+ end
   
 end

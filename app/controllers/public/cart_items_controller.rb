@@ -2,8 +2,8 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
   
   def index
-    @cart_item = current_customer.cart_items
     @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.price_total }
   end
   
   ##カート機能はネストしない。

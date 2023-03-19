@@ -58,7 +58,7 @@
             <tr>
               <th class="pr-5 bg-light">合計金額</th>
               <td class="pr-5">
-                <!--<#%= number_to_currency(@cart_item.price_total, strip_insignificant_zeros: true) %>-->
+                <%= number_to_currency(@total, unit: "", strip_insignificant_zeros: true) %>
               </td>
             </tr>
         </table>
