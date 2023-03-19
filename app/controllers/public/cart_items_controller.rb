@@ -32,6 +32,12 @@ class Public::CartItemsController < ApplicationController
   end
   
   def update
+    @cart_item = current_customer.cart_items.find(params[:id])
+    @cart_item.update(cart_item_params) 
+    # （引数）=>ストロングパラメータの内容と同じ形のもののみをupdateする。
+    # 基本は保存する内容をpermitで指定しているのでその内容に沿ったアクションしかできない。
+    # destoryはただ削除するだけなのでいらない。
+    redirect_to cart_items_path
   end
   
   def destroy_all
