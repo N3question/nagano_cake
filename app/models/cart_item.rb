@@ -14,8 +14,9 @@ class CartItem < ApplicationRecord
     item.add_tax_price * amount
   end
   
-  # カート内の商品合計に利用
-  def sum_of_price
-    item.price * quantity
+  # 合計
+  def price_total
+   item.price * quantity
   end
+  
 end
