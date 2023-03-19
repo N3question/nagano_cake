@@ -1,6 +1,6 @@
 class OrderDetail < ApplicationRecord
   
-  belongs_to :orders # アソシエーション
-  belongs_to :items # アソシエーション
+  belongs_to :order # アソシエーション
+  belongs_to :item # アソシエーション
   
 end

@@ -1,13 +1,15 @@
 class Admin::HomesController < ApplicationController
   def top
-    # @orders = Order.all
-    # @total_order = Order.all.sum(:order_id)
+    @orders = Order.all.page(params[:page]).per(10)
+    # 以下カスタマーごとのオーダー数のカウント
+    @total_order = Order.customer.all.sum(:customer_id)
   end
   
   private
   
-  # def order_params
-  #   params.require(:order).permit(:customer_id, :postal_code, :address, :name)
-  # end
+  def order_params
+    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost,
+                                  :total_payment,:payment_method, :status)
+  end
   
 end

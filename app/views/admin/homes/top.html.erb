@@ -12,18 +12,23 @@
               </tr>
           </thead>
           <tbody>
-            <!--<#% @orders.each do |order| %>-->
-            <!--  <tr>-->
-                <!--<td><#%= order.created_at %></td>-->
-                <!--<td>-->
-                  <!--<#%= link_to admin_customer_path() do %>-->
-                  <!--  <#%= customer.last_name %><#%= customer.first_name %>-->
+            <!--途中段階。-->
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.created_at %></td>
+                <td>
+                    <%= order.customer.last_name %> <#%= order.customer.first_name %>
+                </td>
+                <td><% @total_order.count %></td>
+                <td>
+                  <!--<#% if order.status %>-->
+                  <!--  <p class="text-secondary mb-0"><strong>退会</strong></p>-->
+                  <!--<#% else %>-->
+                  <!--  <p class="text-success mb-0"><strong>有効</strong></p>-->
                   <!--<#% end %>-->
-                <!--</td>-->
-                <!--<td><#% @total_order  %></td>-->
-                <!--<td><#%= order.status ? %></td>-->
-            <!--  </tr>-->
-            <!--<#% end %>-->
+                </td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
     </div>

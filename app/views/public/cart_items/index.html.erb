@@ -38,7 +38,6 @@
                 <%= cart_item.subtotal.to_s(:delimited) %>
               </td>
               <td align="center">
-                <!--削除する機能は未実装-->
                 <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "削除しますか？"} %>
               </td>
             </tr>

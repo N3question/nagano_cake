@@ -4,5 +4,4 @@ class Admin < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
          
-  # validates :is_deleted, inclusion: { in: [true, false] }
 end
