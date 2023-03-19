@@ -21,20 +21,10 @@ Rails.application.routes.draw do
     root "homes#top"
     get '/', to: 'homes#top', as: 'top'
     get '/about', to: 'homes#about', as: 'about'
-    
-    # 商品に対して（カート内に入る）数量を結びつける。(ネストする)
-    # params[:item_id]でItemのidが取得可能
-    # get '/cart_items', to: 'cart_items#index', as: 'cart_items'
-    resources :items, only: [:index, :show] # do
-      delete '/cart_items/destroy_all'
-      # resource :cart_item, only: [ :update, :destroy, :create]
-    # end
-    resources :cart_items, only: [:index, :create, :destroy] do
-      member do
-        patch 'increase'
-        patch 'decrease'
-      end
-    end
+    # カート機能ではネストしない！！
+    delete '/cart_items/destroy_all'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :items, only: [:index, :show]
     get '/customers/my_page', to: 'customers#show', as: 'my_page'
     get '/customers/information/edit', to: 'customers#edit', as: 'edit_information'
     patch '/customers/information', to: 'customers#update', as: 'information'

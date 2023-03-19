@@ -17,24 +17,27 @@
           </tr>
         </thead>
 
+        <!--NEXT 数量を合算すること！小計やカート全て消すのとかその他諸々は調べればできる。-->
+        <!--数量の表示を変更-->
         <tbody>
           <% @cart_items.each do |cart_item| %>
             <tr>
-              <td>
-                <%= cart_item.name %>
-                <!--商品名-->
+              <td style="vertical-align:middle;">
+                <%= cart_item.item.name %>
               </td>
-              <td>
-                <%= cart_item.count %>
-                <!--商品金額（税込）数字のみ-->
+              <td style="vertical-align:middle;">
+                <%= cart_item.item.add_tax_price.to_s(:delimited) %>
               </td>
-              <td>
-                <!--<#%= @item.cart_item.count %>-->
+              <td align="center">
+                <%= cart_item.amount%>
+                <%= link_to '変更', root_path, class:"btn btn-sm btn-success ml-1" %>
               </td>
-              <td>
+              <td style="vertical-align:middle;">
+                <%= cart_item.subtotal.to_s(:delimited) %>
+              </td>
+              <td align="center">
                 <!--削除する機能は未実装-->
-                <!--<#% link_to '削除する',root_path,-->
-                <!--method: :delete, class:"btn btn-danger", data: {confirm: "削除しますか？"} %>-->
+                <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "削除しますか？"} %>
               </td>
             </tr>
           <% end %>
@@ -52,7 +55,9 @@
         <table class="table table-bordered">
             <tr>
               <th class="pr-5 bg-light">合計金額</th>
-              <td class="pr-5"><!--<#%= @.price.to_s(:delimited) %>--></td>
+              <td class="pr-5">
+                
+              </td>
             </tr>
         </table>
       </div>

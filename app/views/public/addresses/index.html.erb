@@ -1,7 +1,20 @@
+<p class="ml-3 my-3" style="color:green;">
+  <%= flash[:notice] %>
+</p>
+
 <div class="container my-5">
   <div class="row">
       <h5 class="ml-5 mb-5 bg-light">　配送先登録 / 一覧　</h5>
   </div>
+  
+  <% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
   
   <div class="row ml-3">
       <%= form_with model: @address, local: true do |f| %>

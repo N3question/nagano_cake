@@ -15,9 +15,14 @@ class Public::AddressesController < ApplicationController
     # アソシエーションでログインカスタマーのアドレスを検出させる。
     address.customer_id = current_customer.id
     # 3. データをデータベースに保存するためのsaveメソッド実行
-    address.save!
-    # 4. 配送先登録・一覧画面へリダイレクト
-    redirect_to '/addresses'
+    if address.save
+      flash[:notice] = "配送先の登録に成功しました。"
+      # 4. 配送先登録・一覧画面へリダイレクト
+      redirect_to '/addresses'
+    else
+      render :index
+    end
+    
   end
   
   def update
