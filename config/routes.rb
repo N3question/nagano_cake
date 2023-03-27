@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     patch '/customers/information', to: 'customers#update', as: 'information'
     get '/customers/unsubscribe', to: 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/withdraw', to: 'customers#withdraw', as: 'withdraw'
-    post '/orders/comfirm', to: 'orders#comfirm', as: 'comfirm'
+    post '/orders/confirm', to: 'orders#confirm', as: 'confirm'
     get '/orders/complete', to: 'orders#complete', as: 'complete'
     resources :orders, only: [:new, :create, :index, :show] 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]

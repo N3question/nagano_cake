@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :genre # アソシエーション
   has_many :cart_items, dependent: :destroy # アソシエーション
-  has_many :order_details, dependent: :destroy # アソシエーション
+  has_many :orders, through: :ordered_items # アソシエーション
   
   # validates :image, presence: true # いるのか？
   validates :name, presence: true

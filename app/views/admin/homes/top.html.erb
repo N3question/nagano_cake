@@ -19,13 +19,13 @@
                 <td>
                     <%= order.customer.last_name %> <#%= order.customer.first_name %>
                 </td>
-                <td><% @total_order.count %></td>
+                <td><!--<#% @total_order.count %>--></td>
                 <td>
-                  <!--<#% if order.status %>-->
-                  <!--  <p class="text-secondary mb-0"><strong>退会</strong></p>-->
-                  <!--<#% else %>-->
-                  <!--  <p class="text-success mb-0"><strong>有効</strong></p>-->
+                  <!--<#%= form_with(model: @order, url: admins_order_path, local: true, class: "form-row") do |f| %>-->
+                  <!--  <#%= f.select :order_status, Order.order_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6"  %>-->
+                  <!--  <#%= f.submit "更新" %>-->
                   <!--<#% end %>-->
+                  <%= order.order_status %>
                 </td>
               </tr>
             <% end %>
