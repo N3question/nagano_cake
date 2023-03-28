@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   ## 個別のURL ②
   ## resources ③ ...採用順位が高いので下に持ってくる。
   scope module: :public do
-    root "homes#top"
-    get '/', to: 'homes#top', as: 'top'
+    root to: "homes#top"
     get '/about', to: 'homes#about', as: 'about'
     # カート機能ではネストしない！！
     delete '/cart_items/destroy_all'

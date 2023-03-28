@@ -1,24 +1,62 @@
 ja:
   enums:
-      order:
-        status:
-          payment_waiting: "入金待ち"
-          payment_confirmation: "入金確認"
-          in_production: "製作中"
-          preparing_delivery: "発送準備中"
-          delivered: "発送済み"
-        payment_method:
-          credit_card: "クレジットカード"
-          bank_transfer: "銀行振込"
+    order:
+      status:
+        payment_waiting: "入金待ち"
+        payment_confirmation: "入金確認"
+        in_production: "製作中"
+        preparing_delivery: "発送準備中"
+        delivered: "発送済み"
           
-      order_detail:
-        making_status:
-          production_not_possible: "製作不可"
-          production_pending: "製作待ち"
-          in_production: "製作中"
-          production_complete: "製作完了"
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+        
+    order_detail:
+      making_status:
+        production_not_possible: "製作不可"
+        production_pending: "製作待ち"
+        in_production: "製作中"
+        production_complete: "製作完了"
+      
   devise:
     sessions:
       signed_in: "サインインが成功しました。"
       signed_out: "サインアウトが成功しました。"
       already_signed_out: "サインアウトが成功しました。"
+      
+    registrations:
+      signed_up: "ようこそ！新規登録が完了しました。"
+      
+  activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            email:
+              blank: "が空欄になっています。"
+            email:
+              taken: "は使用することができません。別のアドレスを使用してください。"
+            password:
+              blank: "が空欄になっています。"
+            last_name:
+              blank: "が空欄になっています。"
+            first_name:
+              blank: "が空欄になっています。"
+            last_name_kana:
+              blank: "が空欄になっています。"
+            first_name_kana:
+              blank: "が空欄になっています。"
+            postal_code:
+              blank: "が空欄になっています。"
+            address:
+              blank: "が空欄になっています。"
+            telephone_number:
+              blank: "が空欄になっています。"
+              
+  errors:
+    messages:
+      not_saved:
+        one: "1件のエラーのため、この%{resource}が保存されませんでした："
+        other: "この%{resource}は%{count}件のエラーによって保存されませんでした："
+  

@@ -8,7 +8,7 @@
   <div class="row">
     <div class="mx-auto mt-3">
       <%= link_to "退会しない", edit_information_path, class:"btn btn-primary px-3" %>
-      <%= link_to "退会する", withdraw_path, method: :patch, class:"btn btn-danger px-4 ml-3" %>
+      <%= link_to "退会する", withdraw_path, method: :patch, class:"btn btn-danger px-4 ml-3", "data-confirm" => "【警告】退会すると注文内容を観覧できなくなりますがよろしいですか？" %>
     </div>
   </div>
 </div>

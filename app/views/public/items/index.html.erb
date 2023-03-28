@@ -29,19 +29,21 @@
             <table class="mb-3 mr-2" style="width:170px;">
                 <tr class="d-flex align-items-start">
                     <td>
-                      <% if item.image.attached? %>
+                      <!--<#% if item.image.attached? %>-->
+                      <%= link_to item_path(item.id), class:"text-dark" do %>
                         <%= image_tag item.image, size: "170x100", style:"object-fit: cover;" %>
-                      <% else %>
-                        <%= image_tag 'no_image', size: "170x100", class:"border mr-3", style:"object-fit: cover;" %>
                       <% end %>
+                      <!--<#% else %>-->
+                      <!--  <#%= image_tag 'no_image', size: "170x100", class:"border mr-3", style:"object-fit: cover;" %>-->
+                      <!--<#% end %>-->
                     </td>
                 </tr>
                 <tr class="d-flex align-items-start">
                     <td class="py-2">
                       <small>
-                        <%= link_to item_path(item.id), class:"text-dark" do %>
+                        <!--<#%= link_to item_path(item.id), class:"text-dark" do %>-->
                           <%= item.name %>
-                        <% end %>
+                        <!--<#% end %>-->
                       </small>
                     </td>
                 </tr>
