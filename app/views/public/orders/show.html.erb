@@ -1,7 +1,68 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container my-5">
+  <div class="row">
+      <h5 class="ml-5 mb-4 bg-light">　注文履歴詳細　</h5>
+  </div>
 
+  <div class="row">
+    <div class="col-6">
+      <table class="table table-bordered">
+        <p><strong>注文情報</strong></p>
+        <tr>
+          <th>注文日</th>
+          <td>注文日時の表示</td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td>配送先の表示</td>
+        </tr>
+        <tr>
+          <th>支払い方法</th>
+          <td>支払い方法の表示</td>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+          <td>ステータスの表示</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-4">
+      <table class="table table-bordered">
+        <p><strong>請求情報</strong></p>
+        <tr>
+          <th>商品合計</th>
+          <td>金額の表示</td>
+        </tr>
+        <tr>
+          <th>配送料</th>
+          <td>配送料の表示</td>
+        </tr>
+        <tr>
+          <th><strong>ご請求額</strong></th>
+          <td>ご請求額の表示</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-7">
+      <table class="table table-bordered">
+        <p><strong>注文内容</strong></p>
+        <thead>
+          <th>商品</th>
+          <th>単価（税込）</th>
+          <th>個数</th>
+          <th>小計</th>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
   <!--<#%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>-->
   <!--  <#%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>-->
   <!--    <#%= f.submit "更新" , class: "btn btn-outline-success" %>-->
   <!--<#% end %>-->
+  
+</div>
