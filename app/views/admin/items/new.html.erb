@@ -16,10 +16,16 @@
                   </td>
               </tr>
               <tr>
-                  <td>商品名</td><td><%= f.text_field :name, class:"ml-3 mt-1 mb-2 form-control", :placeholder => "商品名" %></td>
+                  <td>商品名</td>
+                  <td>
+                    <%= f.text_field :name, class:"ml-3 mt-1 mb-2 form-control", :placeholder => "商品名" %>
+                  </td>
               </tr>
               <tr>
-                  <td class="align-top">商品説明</td><td><%= f.text_area :introduction, class:"ml-3 mb-1 form-control", :placeholder => "ここに説明文を記述します" %></td>
+                  <td class="align-top">商品説明</td>
+                  <td>
+                    <%= f.text_area :introduction, class:"ml-3 mb-1 form-control", :placeholder => "ここに説明文を記述します" %>
+                  </td>
               </tr>
               <tr>
                   <td class="align-middle">ジャンル</td>
@@ -28,7 +34,10 @@
                   </td>
               </tr>
               <tr>
-                  <td class="align-middle">税抜価格</td><td><%= f.text_field :price, class:"ml-3 my-1 form-control", :placeholder => "1000" %></td>
+                  <td class="align-middle">税抜価格</td>
+                  <td>
+                    <%= f.text_field :price, class:"ml-3 my-1 form-control", :placeholder => "1000" %>
+                  </td>
               </tr>
               <tr>
                   <td>販売ステータス</td>

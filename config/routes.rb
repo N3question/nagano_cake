@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update, :destroy] # destroyは任意
     resources :customers, only: [:index, :show, :create, :edit, :update]
     resources :orders, only: [:show, :update]
-    patch '/order_details/:id', to: 'order_details#update', as: 'order_detail'
+    resources :order_details, only: [:show, :update]
   end
   
 end

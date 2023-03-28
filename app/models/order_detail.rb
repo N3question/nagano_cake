@@ -4,11 +4,11 @@ class OrderDetail < ApplicationRecord
   belongs_to :item # アソシエーション
   
   enum status: { 
-    payment_waiting: 1, 
-    payment_confirmation: 2, 
-    in_production: 3,
-    preparing_delivery: 4,
-    delivered: 5,
+    payment_waiting: 0, 
+    payment_confirmation: 1, 
+    in_production: 2,
+    preparing_delivery: 3,
+    delivered: 4,
   }
   
 end

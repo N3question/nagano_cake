@@ -1,10 +1,10 @@
 <div class="container my-5 ">
   <div class="row">
-    <h5 class="ml-5 mb-5 bg-light">　注文履歴一覧　</h5>
+    <h5 class="ml-5 mb-4 bg-light">　注文履歴一覧　</h5>
   </div>
   
   <div class="row">
-    <div class="col-9 px-0 ml-5">
+    <div class="col-10 px-0 ml-5">
         <table class="table">
           <thead class="bg-light">
               <tr>
@@ -12,20 +12,21 @@
               </tr>
           </thead>
           <tbody>
-            <!--途中段階。-->
             <% @orders.each do |order| %>
               <tr>
-                <td><%= order.created_at %></td>
-                <td>
-                    <%= order.customer.last_name %> <#%= order.customer.first_name %>
+                <td style="text-decoration: underline;">
+                  <%= link_to admin_order_path(order.id) do %>
+                    <p class="text-dark mb-0"><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
+                  <% end %>
                 </td>
-                <td><!--<#% @total_order.count %>--></td>
                 <td>
-                  <!--<#%= form_with(model: @order, url: admins_order_path, local: true, class: "form-row") do |f| %>-->
-                  <!--  <#%= f.select :order_status, Order.order_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6"  %>-->
-                  <!--  <#%= f.submit "更新" %>-->
-                  <!--<#% end %>-->
-                  <%= order.order_status %>
+                  <%= order.customer.last_name %> <%= order.customer.first_name %>
+                </td>
+                <td>
+                  <!--<#%= .amount %>-->
+                </td>
+                <td>
+                  <%= order.status %>
                 </td>
               </tr>
             <% end %>

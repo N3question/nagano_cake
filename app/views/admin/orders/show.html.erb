@@ -1,2 +1,73 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+      <h5 class="ml-5 mb-4 bg-light">　注文履歴詳細　</h5>
+  </div>
+  
+  <table class="table table-borderless table-sm" style="margin-bottom:30px;">
+    <tr>
+      <th style="width:150px;">購入者</th>
+      <td style="text-decoration: underline;">
+        <!--<#%= link_to admin_customer_path(customer.id), class:"text-dark" do %>-->
+          購入者の名前を表示
+        <!--<#% end %>-->
+      </td>
+    </tr>
+    <tr>
+      <th>注文日</th>
+      <td>注文日を表示</td>
+    </tr>
+    <tr>
+      <th>配送先</th>
+      <td>配送先を表示</td>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <td>支払方法を表示</td>
+    </tr>
+    <tr>
+      <th>注文ステータス</th>
+      <td>
+        <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+          <!--<#%= f.select :order_status, Order.statuses.keys %>-->
+          <!--<#%= f.collection_select :order_status, Order.all, :id, {prompt: '--選択してください--'}, class:"ml-3 my-1 form-control" %>-->
+          <%= f.submit "更新" , class: "btn btn-success" %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+  
+  <div class="row">
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <!--<#% @orders.item.genres.each do |order| %>-->
+          <!--<#% end %>-->
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3 ml-auto mt-auto">
+      <table class="table table-borderless table-sm">
+        <tr>
+          <th>商品合計</th>
+          <td>金額を表示</td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td>金額を表示</td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th>
+          <td>金額を表示</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
