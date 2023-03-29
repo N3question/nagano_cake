@@ -10,19 +10,14 @@ class Public::AddressesController < ApplicationController
   end
   
   def create
-    # # １.&2. データを受け取り新規登録するためのインスタンス作成
-    address = Address.new(address_params)
-    # アソシエーションでログインカスタマーのアドレスを検出させる。
-    address.customer_id = current_customer.id
-    # 3. データをデータベースに保存するためのsaveメソッド実行
-    if address.save
-      flash[:notice] = "配送先の登録に成功しました。"
-      # 4. 配送先登録・一覧画面へリダイレクト
+    @addresses = Address.where(customer_id: current_customer.id)
+    @address = Address.new(address_params)
+    @address.customer_id = current_customer.id
+    if @address.save
       redirect_to '/addresses'
     else
       render :index
     end
-    
   end
   
   def update

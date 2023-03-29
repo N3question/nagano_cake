@@ -1,9 +1,7 @@
 class Public::OrdersController < ApplicationController
-  before_action :authenticate_customer!
   def new
     @order = Order.new
     @addresses = Address.all
-    # @addresses = Address.where(customer_id: current_customer.id)
   end
   
   # 次の画面に持っていくために全てに@がついている。
@@ -63,13 +61,12 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    # @cart_items = current_customer.cart_items
     @orders = current_customer.orders
   end
 
   def show
-    # @order = Order.find(params[:id])
-    # @order_details = @order.order_details
+    @order = Order.find(params[:id])
+    # @order_ = Order.find(params[:id])
   end
   
   private

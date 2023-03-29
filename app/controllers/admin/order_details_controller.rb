@@ -1,12 +1,12 @@
 class Admin::OrderDetailsController < ApplicationController
-  def show
-    # @order_detail.order_id =  @order.id
-  end
   
   def update # 途中やめしてるので後でやる
     @order = Order.find(params[:id])
     order.update(order_params)
     redirect_to admin_orders_path
+  end
+  
+  def customer_show
   end
   
   private

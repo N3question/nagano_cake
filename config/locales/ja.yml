@@ -68,6 +68,29 @@ ja:
             price:
               blank: "が空欄になっています。"
               
+        address:
+          attributes:
+            postal_code:
+              blank: "が空欄になっています。"
+            address:
+              blank: "が空欄になっています。"
+            name:
+              blank: "が空欄になっています。"
+              
+    attributes:
+      customer:
+        last_name: "名字"
+        first_name: "名前"
+        last_name_kana: "名字のフリガナ"
+        first_name_kana: "名前のフリガナ" 
+        email: "メールアドレス"
+        password: "パスワード"
+        postal_code: "郵便番号"
+        address: "住所"
+        telephone_number: "電話番号"
+    models:
+      customer: "カスタマー"
+    
   errors:
     messages:
       not_saved:

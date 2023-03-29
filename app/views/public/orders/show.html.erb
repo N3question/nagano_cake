@@ -8,20 +8,24 @@
       <table class="table table-bordered">
         <p><strong>注文情報</strong></p>
         <tr>
-          <th>注文日</th>
-          <td>注文日時の表示</td>
+          <th style="width:30%;">注文日</th>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
           <th>配送先</th>
-          <td>配送先の表示</td>
+          <td>
+            〒<%= @order.postal_code %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
+          </td>
         </tr>
         <tr>
           <th>支払い方法</th>
-          <td>支払い方法の表示</td>
+          <td><%= @order.payment_method_i18n %></td>
         </tr>
         <tr>
           <th>ステータス</th>
-          <td>ステータスの表示</td>
+          <td style="color:green;"><%= @order.status_i18n %></td>
         </tr>
       </table>
     </div>
@@ -34,35 +38,39 @@
         </tr>
         <tr>
           <th>配送料</th>
-          <td>配送料の表示</td>
+          <td><%= @order.shipping_cost %></td>
         </tr>
         <tr>
           <th><strong>ご請求額</strong></th>
-          <td>ご請求額の表示</td>
+          <td><%= @order.total_payment %></td>
         </tr>
       </table>
     </div>
   </div>
   
-  <div class="row">
-    <div class="col-7">
+  <div class="row mt-2">
+    <div class="col-8">
+      <p><strong>注文内容</strong></p>
       <table class="table table-bordered">
-        <p><strong>注文内容</strong></p>
         <thead>
-          <th>商品</th>
-          <th>単価（税込）</th>
-          <th>個数</th>
-          <th>小計</th>
+            <tr>
+              <th style="width:54%;">商品</th>
+              <th style="width:20%;">単価（税込）</th>
+              <th style="width:12%;">個数</th>
+              <th style="width:12%;">小計</th>
+            </tr>
         </thead>
         <tbody>
-          
+          <!--<#% @.each do |order_item| %>-->
+            <tr>
+              <td>商品名を表示</td>
+              <td>単価を表示</td>
+              <td>個数を表示</td>
+              <td>小計を表示</td>
+            </tr>
+          <!--<#% end %>-->
         </tbody>
       </table>
     </div>
   </div>
-  <!--<#%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>-->
-  <!--  <#%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>-->
-  <!--    <#%= f.submit "更新" , class: "btn btn-outline-success" %>-->
-  <!--<#% end %>-->
-  
 </div>

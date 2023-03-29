@@ -1,6 +1,10 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def show
-    # @orders = Order.()
+  end
+  
+  def index # 各カスタマー用
   end
   
   def update
