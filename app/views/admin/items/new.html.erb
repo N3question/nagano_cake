@@ -3,6 +3,19 @@
     <h5 class="ml-5 mb-4 bg-light">　商品新規投稿　</h5>
   </div>
   
+  <% if @item.errors.any? %>
+  <h5 style="color:red;">
+    <strong>
+      <%= @item.errors.count %>件のエラーが発生しました:
+    </strong>
+  </h5>
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li style="color:red;"><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  
   <div class="row mx-5">
     <div class="col-8 mx-5">
 

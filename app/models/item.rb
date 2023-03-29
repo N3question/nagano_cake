@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy # アソシエーション
   has_many :orders, through: :order_details # アソシエーション
   
-  # validates :image, presence: true # いるのか？
+  validates :image, presence: true # いるのか？
   validates :name, presence: true
   validates :introduction, presence: true
   validates :genre_id, presence: true

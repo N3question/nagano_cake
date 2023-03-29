@@ -35,7 +35,6 @@ ja:
           attributes:
             email:
               blank: "が空欄になっています。"
-            email:
               taken: "は使用することができません。別のアドレスを使用してください。"
             password:
               blank: "が空欄になっています。"
@@ -52,6 +51,21 @@ ja:
             address:
               blank: "が空欄になっています。"
             telephone_number:
+              blank: "が空欄になっています。"
+
+        item:
+          attributes:
+            genre:
+              required: "の入力が必要です。"
+            image:
+              blank: "が空欄になっています。"
+            name:
+              blank: "が空欄になっています。"
+            introduction:
+              blank: "が空欄になっています。"
+            genre_id:
+              blank: "が空欄になっています。"
+            price:
               blank: "が空欄になっています。"
               
   errors:
