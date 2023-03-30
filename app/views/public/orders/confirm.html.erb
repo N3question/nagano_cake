@@ -16,9 +16,7 @@
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td>
-                    <% if cart_item.item.image.attached? %>
-                      <%= image_tag cart_item.item.image, size: "60x50", class:"img-fluid", style:"max-width: 90%; , height: auto;", style:"object-fit: cover;" %>
-                    <% end %>
+                    <%= image_tag cart_item.item.image, size: "60x50", class:"img-fluid", style:"max-width: 90%; , height: auto;", style:"object-fit: cover;" %>
                     <%= cart_item.item.name %>
                 </td>
                 <td style="vertical-align: middle;">

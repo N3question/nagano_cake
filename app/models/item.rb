@@ -14,6 +14,6 @@ class Item < ApplicationRecord
   
   # 消費税を加えた商品価格
   def add_tax_price
-      (self.price * 1.1).round
+      (price * 1.1).round
   end
 end

@@ -6,9 +6,6 @@ class Admin::OrderDetailsController < ApplicationController
     redirect_to admin_orders_path
   end
   
-  def customer_show
-  end
-  
   private
   
   def order_detail_params # 中途半端なまま。後でやる

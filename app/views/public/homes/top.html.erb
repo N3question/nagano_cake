@@ -11,8 +11,8 @@
       </div>
       <div class="border border-dark p-4">
         <% @genres.each do |genre| %>
-          <p>
-            <%= link_to root_path do %>
+          <p class="mb-3">
+            <%= link_to root_path, class:"text-dark" do %>
               <%= genre.name %>
             <% end %>
           </p>

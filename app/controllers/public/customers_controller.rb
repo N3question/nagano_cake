@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
-  before_action :is_matching_login_customer, only: [:edit, :update] #idが出ないからいらないかも
+  before_action :authenticate_customer!
+  
   def show
   end
 
@@ -38,10 +39,4 @@ class Public::CustomersController < ApplicationController
     :first_name_kana, :postal_code, :address, :telephone_number, :email)
   end
   
-  def is_matching_login_customer #idが出ないからいらないかも
-    @customer = current_customer
-    unless @customer.id == current_customer.id
-      redirect_to root_path
-    end
-  end
 end

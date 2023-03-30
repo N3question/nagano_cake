@@ -1,4 +1,6 @@
 class Public::AddressesController < ApplicationController
+  before_action :authenticate_customer!
+  
   def index
     @address = Address.new
     # 通常はここでidの定義をするが、アソシエーションで省略可能。

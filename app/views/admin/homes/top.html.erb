@@ -14,9 +14,9 @@
           <tbody>
             <% @orders.each do |order| %>
               <tr>
-                <td style="text-decoration: underline;">
-                  <%= link_to admin_order_path(order.id) do %>
-                    <p class="text-dark mb-0"><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
+                <td style="text-decoration: underline; width:20%;">
+                  <%= link_to admin_order_path(order.id), class:"text-dark" do %>
+                    <p class="mb-0"><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
                   <% end %>
                 </td>
                 <td>
@@ -25,8 +25,8 @@
                 <td>
                   <%= order.order_details.sum(:amount) %>
                 </td>
-                <td>
-                  <%= order.status %>
+                <td style="color:green;">
+                  <%= order.status_i18n %>
                 </td>
               </tr>
             <% end %>

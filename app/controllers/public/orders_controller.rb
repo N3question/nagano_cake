@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def new
     @order = Order.new
     @addresses = Address.all
@@ -65,8 +67,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
-    # @order_ = Order.find(params[:id])
+    @order = current_customer.orders.find(params[:id])
   end
   
   private

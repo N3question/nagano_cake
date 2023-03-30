@@ -5,9 +5,9 @@ class CartItem < ApplicationRecord
   belongs_to :item # アソシエーション
   
   # 消費税を加えた商品価格
-  def add_tax_price
-      (self.price * 1.1).round
-  end
+  # def add_tax_price
+  #     (price * 1.1).floor
+  # end
   
   # 小計
   def subtotal

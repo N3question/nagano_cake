@@ -111,19 +111,21 @@
                       </li>
                       <!--管理者側-->
                       <li class="list-inline-item">
-                        <%= link_to '管理者ログイン', new_admin_session_path, class:"btn btn-outline-info btn-sm"%>
+                        <%= link_to new_admin_session_path, class:"btn" do %>
+                          <i class="bi bi-gear"></i>
+                        <% end %>
                       </li>
                     </ul>
                     <% end %>
                 </div>
                 
                 <!--検索フォーム-->
-                <div class="input-group mt-3" style="width:250px;"><br />
-                  <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="Search"></input>
-                  <span class="input-group-btn input-group-append">
-                    <submit type="submit" id="btn-search" class="btn btn-secondary"><i class="bi bi-search"></i></submit>
-                  </span>
-                </div>
+                <!--<div class="input-group mt-3" style="width:250px;"><br />-->
+                <!--  <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="Search"></input>-->
+                <!--  <span class="input-group-btn input-group-append">-->
+                <!--    <submit type="submit" id="btn-search" class="btn btn-secondary"><i class="bi bi-search"></i></submit>-->
+                <!--  </span>-->
+                <!--</div>-->
                 
             </nav>
           </div>
