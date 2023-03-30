@@ -25,11 +25,15 @@
             </tr>
         </thead>
         
-        <tbody>
+        <tbody style="border-bottom: 0.5px solid silver;">
             <% @genres.each do |genre| %>
               <tr>
-                <td class="pr-5"><%= genre.name %></td>
-                <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-success ml-5 px-4" %></td>
+                <td class="pr-5"  style="vertical-align:middle;">
+                  <%= genre.name %>
+                </td>
+                <td>
+                  <%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-success ml-5 px-4" %>
+                </td>
               </tr>
             <% end %>
         </tbody>

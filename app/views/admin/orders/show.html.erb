@@ -1,5 +1,10 @@
 <div class="container mt-5">
   <div class="row">
+      <%= link_to admin_top_path, style:"color:#333;" do %>
+          <big>
+          <i class="bi bi-arrow-left-circle"></i>
+        </big>
+      <% end %>
       <h5 class="ml-5 mb-4 bg-light">　注文履歴詳細　</h5>
   </div>
   
@@ -7,7 +12,6 @@
     <tr>
       <th style="width:150px;">購入者</th>
       <td style="text-decoration: underline;">
-        <!--<#%= link_to admin_customer_path(customer.id), class:"text-dark" do %>-->
         <%= @order.customer.last_name %> <%= @order.customer.first_name %>
       </td>
     </tr>
@@ -43,21 +47,21 @@
   <div class="row">
     <div class="col-8">
       <table class="table">
-        <thead>
+        <thead class="bg-light">
           <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th>製作ステータス</th>
+          <th style="text-align:center;">単価<small><b>（税込）</b></small></th>
+          <th style="text-align:center;">数量</th>
+          <th style="text-align:center;">小計</th>
+          <th style="text-align:center;">製作ステータス</th>
         </thead>
-        <tbody>
+        <tbody style="border-bottom: 0.5px solid silver;">
           <% @order.order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.price.to_s(:delimited) %></td>
-              <td><%= order_detail.amount %></td>
-              <td><%= (order_detail.price*order_detail.amount).to_s(:delimited) %></td>
-              <td>
+              <td style="text-align:center;"><%= order_detail.price.to_s(:delimited) %></td>
+              <td style="text-align:center;"><%= order_detail.amount %></td>
+              <td style="text-align:center;"><%= (order_detail.price*order_detail.amount).to_s(:delimited) %></td>
+              <td style="text-align:center; white-space: nowrap">
                 <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true do |f| %>
                   <%= f.select :making_status, [["製作不可","production_not_possible"],["製作待ち","production_pending"],["製作中","in_production"],["製作完了","production_complete"]] %>
                   <%= f.submit "更新" , class: "btn btn-success btn-sm" %>
@@ -68,21 +72,27 @@
         </tbody>
       </table>
     </div>
-    <div class="col-3 ml-auto mt-auto">
-      <table class="table table-borderless table-sm">
+    <div class="col-3 ml-auto mt-auto mb-3">
+      <table class="table table-borderless table-sm" style="width:200px;">
         <tr>
           <th>商品合計</th>
-          <td>
+          <td style="text-align:right;">
             <%= number_to_currency(@total, unit: "", strip_insignificant_zeros: true) %>円
           </td>
         </tr>
         <tr>
           <th>送料</th>
-          <td><%= @order.shipping_cost %>円</td>
+          <td style="text-align:right;">
+            <%= @order.shipping_cost %>円
+          </td>
         </tr>
-        <tr>
+        <tr style="border-top: 0.5px solid silver;">
           <th>請求金額合計</th>
-          <td><%= @order.total_payment %>円</td>
+          <td style="text-align:right;">
+            <strong>
+              <%= @order.total_payment %>円
+            </strong>
+          </td>
         </tr>
       </table>
     </div>

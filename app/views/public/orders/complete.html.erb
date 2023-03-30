@@ -1,7 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="mt-5 mx-auto">
-      <h4>ご注文ありがとうございました！</h4>
+    <div class="mt-5 mx-auto" style="text-align:center;">
+      <h4 class="mb-4">ご注文ありがとうございました！</h4>
+      <%= link_to root_path, style:"color:#333;" do %>
+        <p>
+          <small>
+          <i class="bi bi-arrow-left-circle"></i>トップページに戻る
+          </small>
+        </p>
+      <% end %>
     </div>    
   </div>
 </div>

@@ -8,13 +8,17 @@
         <table class="table">
           <thead class="bg-light">
               <tr>
-                <th>購入日時</th><th>購入者</th><th>注文個数</th><th>注文ステータス</th>
+                <th style="width:20%;">購入日時</th>
+                <th>購入者</th>
+                <th style="width:16%;">注文個数</th>
+                <th style="width:22%;">注文ステータス</th>
               </tr>
           </thead>
+          
           <tbody>
             <% @orders.each do |order| %>
               <tr>
-                <td style="text-decoration: underline; width:20%;">
+                <td style="text-decoration: underline;">
                   <%= link_to admin_order_path(order.id), class:"text-dark" do %>
                     <p class="mb-0"><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
                   <% end %>

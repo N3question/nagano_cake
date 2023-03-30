@@ -3,7 +3,7 @@ class Admin::OrderDetailsController < ApplicationController
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order
     # @の使用の有無はViewでインスタンス変数を使用するか否か。
-    # エラー内容の際にはいる。バリデーションを設定してい時。
+    # エラー内容の際にはいる。バリデーションを設定している時。
     # 今回は下の記述で使用しているのでいる。
     @order_details = @order.order_details.all
 
@@ -26,7 +26,6 @@ class Admin::OrderDetailsController < ApplicationController
       # is_updatedがtrue=> statusが「発送準備中」に更新。
       # 上記のif文がfalseの場合、更新しない。
       @order.update(status: 3) if is_updated
-      
     end
     redirect_to admin_order_path(@order)
   end
