@@ -56,7 +56,7 @@
             <td></td>
             <td>
                 <%= link_to '編集する', edit_admin_customer_path(@customer.id), class:"btn btn-success btn-sm px-3 mt-4" %>
-                <%= link_to '注文一覧を見る', root_path, class:"btn btn-primary btn-sm ml-5 px-3 mt-4" %>
+                <%= link_to '注文一覧を見る', admin_detail_index_path(@customer.id), class:"btn btn-primary btn-sm ml-5 px-3 mt-4" %>
             </td>
           </tr>
         </table>

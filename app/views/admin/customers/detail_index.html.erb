@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="row">
+    <%= link_to admin_top_path, style:"color:#333;" do %>
+      <big>
+        <i class="bi bi-arrow-left-circle"></i>
+      </big>
+    <% end %>
+    <h5 class="ml-5 mb-4 bg-light">
+      　<%= @customer.last_name %> <%= @customer.first_name %>さんの注文履歴　
+    </h5>
+  </div>
+  
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <table class="table">
+        <thead class="bg-light">
+            <tr>
+              <th>購入日時</th>
+              <th style="width:27%;">注文個数</th>
+              <th style="width:27%;">注文ステータス</th>
+            </tr>
+        </thead>
+        <tbody style="border-bottom: 0.5px solid silver;">
+            <% @customer.orders.each do |order| %>
+              <tr>
+                <td style="text-decoration: underline;">
+                  <%= link_to admin_order_path(order.id), class:"text-dark" do %>
+                    <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                  <% end %>
+                </td>
+                <td><%= order.order_details.sum(:amount) %></td>
+                <td><%= order.status_i18n %></td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--ページネーションを入れる-->
+</div>

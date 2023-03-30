@@ -12,7 +12,9 @@
     <tr>
       <th style="width:150px;">購入者</th>
       <td style="text-decoration: underline;">
-        <%= @order.customer.last_name %> <%= @order.customer.first_name %>
+        <%= link_to admin_detail_index_path(@order.customer.id), style:"color:black;" do %>
+          <%= @order.customer.last_name %> <%= @order.customer.first_name %>
+        <% end %>
       </td>
     </tr>
     <tr>

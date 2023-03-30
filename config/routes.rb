@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     get '/', to: 'homes#top', as: 'top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :genres, only: [:index, :create, :edit, :update, :destroy] # destroyは任意
+    get '/customers/:id/detail_index', to: 'customers#detail_index', as: 'detail_index' # 任意
     resources :customers, only: [:index, :show, :create, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:show, :update]
