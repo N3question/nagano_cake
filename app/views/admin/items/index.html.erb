@@ -35,7 +35,7 @@
                     <!--基本的にif式はtrueで返ってくる。-->
                     <!--pタグは１つの要素をまとめるブロック要素、
                         strongタグはインライン要素-->
-                    <% if item.is_active %>
+                    <% if item.is_active == true %>
                       <p class="text-success"><strong>販売中</strong></p>
                     <% else %>
                       <p class="text-secondary"><strong>販売停止中</strong></p>

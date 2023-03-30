@@ -34,7 +34,7 @@
           <td>
               <% if @item.is_active %>
                 <p class="text-success mb-0"><strong>販売中</strong></p>
-              <% else %>
+              <% elsif @item.is_active == false %>
                 <p class="text-secondary mb-0"><strong>販売停止中</strong></p>
               <% end %>
           </td>
