@@ -49,12 +49,16 @@
           <tr>
             <td>
               <!--form_withを使う。-->
-              <% if customer_signed_in? %>
+              <% if customer_signed_in? & @item.is_active == true %>
                 <%= form_with model: @cart_item, url: cart_items_path do |f| %> 
                   <%= f.hidden_field :item_id, :value => @item.id %>
                   <%= f.select :amount, *[1..5], include_blank: "個数選択", class:"form-control mt-4" %>
                   <%= f.submit 'カートに入れる', class:"btn btn-success btn-sm px-3 py-2 ml-5 my-4" %>
                 <% end %>
+              <% else %>
+                <h6 class="mt-4" style="color:red;">
+                    <i class="bi bi-cart-x"></i> 販売停止中
+                </h6>
               <% end %>
             </td>
           </tr>
