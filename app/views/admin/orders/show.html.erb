@@ -32,10 +32,8 @@
     <tr>
       <th>注文ステータス</th>
       <td>
-        <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-          <!--<#%= f.select :order_status, Order.statuses.keys %>-->
-          注文ステータス表示
-          <!--<#%= f.collection_select :order_status, Order.statuses, :id, class:"ml-3 my-1 form-control" %>-->
+        <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
+          <%= f.select :status, [["入金待ち","payment_waiting"],["入金確認","payment_confirmation"],["製作中","in_production"],["発送準備中","preparing_delivery"],["発送済み","delivered"]] %>
           <%= f.submit "更新" , class: "btn btn-success btn-sm" %>
         <% end %>
       </td>
@@ -56,14 +54,12 @@
           <% @order.order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.price %></td>
+              <td><%= order_detail.price.to_s(:delimited) %></td>
               <td><%= order_detail.amount %></td>
-              <td><%= order_detail.price*order_detail.amount %></td>
+              <td><%= (order_detail.price*order_detail.amount).to_s(:delimited) %></td>
               <td>
-                <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-                  <!--<#%= f.select :order_status, Order.statuses.keys %>-->
-                  製作ステータス表示
-                  <!--<#%= f.collection_select :order_status, Order.statuses, :id, class:"ml-3 my-1 form-control" %>-->
+                <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true do |f| %>
+                  <%= f.select :making_status, [["製作不可","production_not_possible"],["製作待ち","production_pending"],["製作中","in_production"],["製作完了","production_complete"]] %>
                   <%= f.submit "更新" , class: "btn btn-success btn-sm" %>
                 <% end %>
               </td>
@@ -77,6 +73,7 @@
         <tr>
           <th>商品合計</th>
           <td>
+            <%= number_to_currency(@total, unit: "", strip_insignificant_zeros: true) %>円
           </td>
         </tr>
         <tr>

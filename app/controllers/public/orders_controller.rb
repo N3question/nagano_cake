@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
     @order_detail.order_id =  @order.id #order注文idを紐付けておく
       @order_detail.item_id = cart_item.item_id #カート内商品idを注文商品idに代入
       @order_detail.amount = cart_item.amount #カート内商品の個数を注文商品の個数に代入
-      @order_detail.price = (cart_item.item.add_tax_price.to_s(:delimited)) #消費税込みに計算して代入
+      @order_detail.price = (cart_item.item.add_tax_price) #消費税込みに計算して代入
       @order_detail.save #注文商品を保存
     end
     
