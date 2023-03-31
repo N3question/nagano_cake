@@ -17,10 +17,11 @@
     </div>
     
     <div class="col-8 offset-1 px-0">
-      <div>
-        <p>
-          <h3><b>商品一覧</b></h3><small>(全<%= @items_count.count %>件)</small>
-        </p>
+      <div class="d-flex  align-items-end mb-3">
+          <h3 class="mb-0"><b>商品一覧</b></h3>
+          <p class="mb-0" style="vertical-align:;">
+            (全<%= @items_count.count %>件)
+          </p>
       </div>
       
       <div class="d-flex flex-wrap">
@@ -35,7 +36,7 @@
                 </tr>
                 <tr class="d-flex align-items-start">
                     <td class="py-2">
-                      <small><%= item.name %></small>
+                      <p class="small"><%= item.name %></p>
                     </td>
                 </tr>
                 <tr>

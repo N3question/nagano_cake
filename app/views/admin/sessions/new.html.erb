@@ -8,7 +8,7 @@
   </div>
   
   <div class="row mx-5">
-    <div class="col-8 mx-5">
+    <div class="col-10 mx-5">
             <!--resourceはdeviseに元々ある機能で、Customer.newを代入するような役割を果たしている。-->
             <!--<#%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
             <%= form_with model: resource, url: session_path(resource_name) do |f| %>
@@ -16,12 +16,12 @@
                 <tbody>  
                   <tr>
                     <td><%= f.label :email, 'メールアドレス' %></td>
-                    <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com", class:"ml-5 mb-2 form-control" %></td>
+                    <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com", class:"ml-5 mb-2 form-control", style:"width:400px;" %></td>
                   </tr>
 
                   <tr>
                     <td><%= f.label :password, 'パスワード' %></td>
-                    <td><%= f.password_field :password, autocomplete: "current-password", class:"ml-5 mb-2 form-control" %></td>
+                    <td><%= f.password_field :password, autocomplete: "current-password", class:"ml-5 mb-2 form-control", style:"width:400px;" %></td>
                   </tr>
                   
                   <tr>
