@@ -1,15 +1,16 @@
 <div class="container my-5 ">
   <div class="row">
-    <h5 class="ml-5 mb-5 bg-light">　商品詳細　</h5>
+      <%= link_to admin__path, style:"color:#333;" do %>
+        <big>
+          <i class="bi bi-arrow-left-circle"></i>
+        </big>
+      <% end %>
+      <h5 class="ml-5 mb-5 bg-light">　商品詳細　</h5>
   </div>
 
   <div class="row ml-5">
     <div class="col-3">
-        <% if @item.image.attached? %>
-            <%= image_tag @item.image, size: "250x180", class:"img-fluid", style:"max-width: 90%; , height: auto;", style:"object-fit: cover;" %>
-        <% else %>
-          <%= image_tag 'no_image', size: "250x180", class:"img-fluid border", style:"max-width: 90%; , height: auto;", style:"object-fit: cover;" %>
-        <% end %>
+        <%= image_tag @item.image, size: "250x180", class:"img-fluid", style:"max-width: 90%; , height: auto;", style:"object-fit: cover;" %>
     </div>
     <div class="col-8 ml-3">
       <table class="table table-borderless table-sm">
@@ -32,9 +33,9 @@
         <tr>
           <td>販売ステータス</td>
           <td>
-              <% if @item.is_active %>
+              <% if @item.is_active? %>
                 <p class="text-success mb-0"><strong>販売中</strong></p>
-              <% elsif @item.is_active == false %>
+              <% else %>
                 <p class="text-secondary mb-0"><strong>販売停止中</strong></p>
               <% end %>
           </td>
